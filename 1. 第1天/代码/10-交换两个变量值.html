@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    //  要求：交换两个变量的值 ( 实现思路：使用一个 临时变量 用来做中间存储 )
+
+    // 1. 定义变量apple1，apple2，临时变量temp
+    var apple1 = "青苹果";
+    var apple2 = "红苹果";
+    var temp;
+    /* 2. 进行交换：
+    "青苹果"存入temp中（apple1变空），
+    "红苹果"存入apple1中（apple2变空），
+    temp中的"青苹果" 再存入apple2中，完成交换。  */
+    temp = apple1;
+    apple1 = apple2;
+    apple2 = temp;
+    // 3. 输出
+    console.log(apple1);
+    console.log(apple2);
+  </script>
+</head>
+<body>
+</body>
+</html>

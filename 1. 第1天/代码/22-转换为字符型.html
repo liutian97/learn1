@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 转换为字符串
+    
+    // 1. 变量.toString()   把数字型转换为字符串型   
+    var num = 10;
+    var str = num.toString();
+    console.log(str);  // 10
+    console.log(typeof str);  // string
+    // 2. String(变量)   
+    console.log(String(num));  
+    // 3. + 拼接字符串    （隐式转换）
+    console.log(num + '');  // 先将num转换为字符串，然后再和空字符串进行拼接
+  </script>
+</head>
+<body>
+</body>
+</html>

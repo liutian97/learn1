@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 案例 2：简单加法器
+    // 要求：计算两个数的值， 用户输入第一个值后，继续弹出第二个输入框并输入第二个值，最后通过弹出窗口显示出两次输入值相加的结果。
+    
+    /* 实现： ① 先弹出第一个输入框，提示用户输入第一个值 保存起来
+              ② 再弹出第二个框，提示用户输入第二个值 保存起来
+              ③ 把这两个值相加，并将结果赋给新的变量（注意数据类型转换） 
+              ④ 弹出警示框（alert），把计算的结果输出 （输出结果）*/
+
+    //  注意：prompt 取过来的值是字符型的，要进行数据类型转换在相加。
+    var a = prompt('请输入第一个值');
+    var b = prompt('请输入第二个值');
+
+    //第一次出错：又忘了prompt 取过来的值是字符型的，没有进行数据类型转换，然后就拼接了
+    /* var sum = a + b ;
+    alert('两次输入值相加的结果是:' + sum);  //结果不会相加，会拼接 */
+
+    // 下面是正确的：
+    var sum = parseFloat(a) + parseFloat(b);
+    alert('两次输入值相加的结果是:' + sum);
+  </script>
+</head>
+<body>
+</body>
+</html>
