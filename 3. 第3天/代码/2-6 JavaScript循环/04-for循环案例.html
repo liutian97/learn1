@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 案例1： 求1-100之间所有整数的累加和
+    var sum = 0;
+    for (var i = 1; i <= 100; i++) {
+      sum += i;
+      //sum = sum + i;  
+    }
+    console.log(sum);   //5050
+
+    //案例2： 求1-100之间所有数的平均值
+    var average = 0;
+    var sum = 0
+    for (var i = 1; i <= 100; i++) {
+      sum += i;
+      average = sum / i;
+    }
+    console.log(average);   // 50.5
+
+    //案例3： 求1-100之间所有偶数和奇数的和
+    var even = 0;
+    var odd = 0;
+    for (var i = 1; i <= 100; i++) {
+      if (i % 2 == 0) {   // 偶数
+        even += i; 
+      } else {
+        odd += i;
+      }
+    }
+    console.log("1-100之间所有偶数和是" + even);   // 2550
+    console.log("1-100之间所有奇数和是" + odd);    // 2500
+
+    //案例4： 求1-100之间所有能被3整除的数字的和
+    var sum = 0;
+    for (var i = 1; i <= 100; i++) {
+      if (i % 3 == 0) {
+        sum += i;
+      }  
+    }
+    console.log(sum);  // 1683
+  </script>
+</head>
+<body>
+</body>
+</html>

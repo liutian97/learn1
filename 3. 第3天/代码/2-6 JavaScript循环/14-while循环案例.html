@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // while循环案例
+    // 1. 打印人的一生，从1岁到100岁
+    var age = 1;
+    while (age <= 100) {
+      console.log(age + "岁了");
+      age++;
+    }
+    
+    // 2. 计算 1 ~ 100 之间所有整数的和
+    var num = 1;
+    var sum = 0 ;
+    while (num <= 100) {
+      sum += num;
+      num++;
+    }
+    console.log('1 ~ 100 之间所有整数的和是' + sum);
+    
+    // 3. 弹出一个提示框， 你爱我吗？  如果输入我爱你，就提示结束，否则，一直询问。
+    var info = prompt('你爱我吗？');
+    while (info !== '我爱你') {
+      info = prompt('你爱我吗？');
+    }
+    alert("真可怕啊");
+    
+    // 4.接收用户输入的用户名和密码，若用户名为 “admin” ,密码为 “123456” ,则提示用户登录成功! 否则，让用户一直输入。
+    var uname = prompt("请输入用户名");
+    var password = prompt("请输入密码");
+    while (uname !== "admin" && password !== "123456") {
+      uname = prompt("请输入用户名");
+      password = prompt("请输入密码");
+    }
+    alert('登录成功!');
+  </script>
+</head>
+<body>
+</body>
+</html>
