@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 案例 2：判断闰年
+    //接收用户输入的年份，如果是闰年就弹出闰年，否则弹出是平年
+    var year = prompt("请输入年份");
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+      alert("闰年");
+    } else {
+      alert("平年");
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>

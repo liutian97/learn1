@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 1. 布尔值的逻辑运算  true && false  == false 
+    // 2. 表达式/值的逻辑运算  123 && 456
+
+    // 3. &&短路运算  ( 0  ''  null undefined  NaN)
+    console.log(123 && 456); // 456
+    console.log(0 && 456); //  0
+    console.log(0 && 1 + 2 && 46 ); // 0
+    console.log('' && 1 + 2 && 456 * 11); // ''
+    // 4. ||短路运算  
+    console.log(123 || 456 || 456 + 123); // 123
+    console.log(0 || 456 || 456 + 123); // 456
+
+    var num = 0;
+    console.log(123 || num++);  //123
+    console.log(num); // 0
+  </script>
+</head>
+<body>
+</body>
+</html>
