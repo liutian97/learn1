@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 函数返回值注意事项
+    // 1. return 终止函数
+    function getSum(num1, num2) {
+      return num1 + num2;
+      alert('不执行');
+    }
+    console.log(getSum(1, 2));   // 3
+
+    // 2. return 只能返回一个值
+    function getNum(a, b) {
+      return a, b;
+    }
+    console.log(getNum(1, 2));   // 2
+
+    // 3.  求任意两个数的加减乘数结果(数组实现)
+    function getResult(num1, num2) {
+      return [num1 + num2, num1 - num2, num1 * num2, num1 / num2];
+    }
+    console.log(getResult(1, 2));  // [3, -1, 2, 0.5]
+
+    // 4. 有return 返回return的值，没有return返回undefined
+    function fn1(){
+      return 1;
+    }
+    console.log(fn1());  // 1
+
+    function fn2(){
+
+    }
+    console.log(fn2());  // undefined
+  </script>
+</head>
+<body>
+</body>
+</html>
