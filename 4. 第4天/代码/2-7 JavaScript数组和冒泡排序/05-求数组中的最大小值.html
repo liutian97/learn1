@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 求数组[2,6,1,77,52,25,7]中的最大值
+    var arr = [2,6,1,77,52,25,7];
+    var max = arr[0];
+    for (var i = 1; i <= 7; i++) {
+      if (arr[i] > max) {
+        max = arr[i];
+      }
+    }
+    console.log('数组的最大值为:' + max);
+
+
+  //  求数组[2,6,1,77,52,25,7]中的最小值
+  var arr = [2,6,1,77,52,25,7];
+  var min = arr[0];
+  for (var i = 1; i <= arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+    }
+  }
+  console.log('数组的最小值为:' + min);
+  </script>
+</head>
+<body>
+</body>
+</html>

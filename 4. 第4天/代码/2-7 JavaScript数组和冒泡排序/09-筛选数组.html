@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 案例：将数组 [2, 0, 6, 1, 77, 0, 52, 0, 25, 7] 中大于等于 10 的元素选出来，放入新数组。
+    // 方法1：定义变量j 计算新数组的索引号
+    var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+    var arr1 = [];
+    var j = 0;  // 定义变量j 计算新数组的索引号
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] >= 10) {
+        arr1[j] = arr[i] ;
+        j++;
+      }
+    }
+    console.log(arr1);
+
+    // 方法2：数组长度（arr1.length）自动检测元素变化
+    var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+    var arr1 = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] >= 10) {
+        arr1[arr1.length] = arr[i];
+      }
+    }
+    console.log(arr1);
+  </script>
+</head>
+<body>
+</body>
+</html>
