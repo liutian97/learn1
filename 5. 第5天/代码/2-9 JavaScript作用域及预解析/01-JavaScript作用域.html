@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 全局作用域
+    var num = 10;
+    var num = 1;
+    console.log(num);  // 1
+
+    // 局部作用域
+    function fn() {
+      var num = 20;
+      console.log(num);  
+    }
+    fn();   // 20
+  </script>
+</head>
+<body>
+</body>
+</html>

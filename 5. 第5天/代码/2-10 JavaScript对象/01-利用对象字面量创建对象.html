@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 利用对象字面量创建对象
+    // var obj = {};  // kong
+    var obj = {
+      uname: "张三",
+      age: 18,
+      sex: '男',
+      sayHi: function(){
+        console.log('hi');
+      }
+    }
+    // 调用属性
+    console.log(obj.uname);   // 张三
+    console.log(obj['age']);  // 18
+    // 调用方法
+    obj.sayHi();
+  </script>
+</head>
+<body>
+</body>
+</html>

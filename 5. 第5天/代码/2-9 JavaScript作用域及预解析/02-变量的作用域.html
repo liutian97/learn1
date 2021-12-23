@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 1. 全局变量
+    var num = 10;
+    console.log(num);   // 10
+
+    function fn() {
+      console.log(num);   // 局部能使用 
+    }
+    fn();    // 10
+    console.log(arg);   // arg is not defined
+
+    // 2. 局部变量
+    function fn1(arg) {
+      var num1 = 2;
+      num2 = 5;   // 全局变量
+    }
+    fn1();
+    // console.log(num1);  // 全局不能使用 num1 is not defined
+    console.log(num2);  // 5
+    
+  </script>
+</head>
+<body>
+</body>
+</html>

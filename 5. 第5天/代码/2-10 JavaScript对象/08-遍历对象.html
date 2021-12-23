@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 遍历对象 
+    function Person(uname, age, sex) {
+      this.uname = uname;
+      this.age = age;
+      this.sex = sex;
+      this.sayHi = function(hi){
+        console.log(hi)
+      }
+    }
+    var obj = new Person('张三', 18, '男');
+
+    for (var k in obj) {
+      console.log(k);       // 属性名   uname, age, sex, sayHi
+      console.log(obj[k])   // 属性值   张三, 18, 男, ƒ (hi){ console.log(hi) }
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>
