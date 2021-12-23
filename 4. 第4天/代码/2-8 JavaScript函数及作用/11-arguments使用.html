@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // arguments 的使用 
+    function fn(){
+      console.log(arguments);         // Arguments(3)
+      console.log(arguments.length);  // 3 
+      console.log(arguments[2]);      // 3
+      for (var i = 0; i < arguments.length; i++) {
+        console.log(arguments[i]);    // 1 2 3
+      }
+    }
+    fn(1, 2, 3);  // Arguments(3)  3   3
+  </script>
+</head>
+<body>
+</body>
+</html>

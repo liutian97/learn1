@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 案例：用户输入年份，输出当前年份2月份的天数
+    // 闰年 29 天  平年 28 天
+    function getFebDays() {
+      var year = prompt('请输入年份');
+      if (isRunYear(year)) {
+        alert(year + '年是闰年，2月份有29天')
+      } else {
+        alert(year + '年是平年，2月份有28天')
+      }
+    }
+    getFebDays();
+    
+    // 判断是否为闰年函数
+    function isRunYear(year) {
+      var flag = false;
+      if (year % 4 == 0 && year % 100 != 0 || year % 4 == 0) {
+        flag = true;
+      }
+      return flag ;
+    }
+    </script>
+</head>
+<body>
+</body>
+</html>

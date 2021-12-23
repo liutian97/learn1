@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 案例：利用函数判断闰年
+    // 要求：输入一个年份，判断是否是闰年（闰年：能被4整除并且不能被100整数，或者能被400整除）
+    function isRunYear(year) {
+      var flag = false;
+      if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        flag = true;    // 闰年
+      }
+      return flag;     // 平年
+    }
+    var year1 = isRunYear(2000);
+    var year2 = isRunYear(1997);
+    console.log(year1);  // true
+    console.log(year2);  // false    
+  </script>
+</head>
+<body>
+</body>
+</html>
