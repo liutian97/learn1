@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 格式化日期 年月日 
+    var date = new Date();
+    console.log(date.getFullYear());  // 2021
+    console.log(date.getMonth() + 1);     // 12
+    console.log(date.getDate());      // 24
+    console.log(date.getDay());       // 5
+
+    //2021年 12月 24日 星期五
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var dates = date.getDate();
+    var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+    var day = date.getDay();
+    console.log('今天是' + year + '年' + month + '月' + dates + '日 ' + arr[day]);  // 今天是2021年12月24日 星期五
+  </script>
+</head>
+<body>
+</body>
+</html>

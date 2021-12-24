@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 1. Math对象随机数方法  
+    console.log(Math.random());
+
+    // 2. 2个整数（包含）之间的随机数
+    // Math.floor(Math.random() * (max - min + 1) + min);
+    function getRandom(min , max) {
+      return(Math.floor(Math.random() * (max - min + 1) + min));
+    }
+    console.log(getRandom(1 , 10));
+    console.log(getRandom(10 , 30));
+
+    // 3. 随机点名
+    var arr = ['红', '黄', '蓝', '绿'];
+    //console.log(arr[getRandom(0, 3)]);
+    console.log(arr[getRandom(0, arr.length -1)]);
+    
+
+
+  </script>
+</head>
+<body>
+</body>
+</html>

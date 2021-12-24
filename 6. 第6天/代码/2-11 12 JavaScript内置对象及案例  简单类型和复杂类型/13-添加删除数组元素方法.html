@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 添加删除数组元素方法
+    // 1. push() 末尾添加
+    var arr = [1, 2, 3];
+    //arr.push(4, 5);
+    console.log(arr.push(4, 5));  // 5 
+    console.log(arr);             // [1, 2, 3, 4, 5]
+  
+    // 2. unshift 开头添加
+    //arr.unshift('哈哈', '嘻嘻');
+    console.log(arr.unshift('哈哈', '嘻嘻'));  // 7
+    console.log(arr);                         // ['哈哈', '嘻嘻', 1, 2, 3, 4, 5]
+    
+    // 3. pop() 删除最后1个
+    //arr.pop();
+    console.log(arr.pop());   // 5
+    console.log(arr);         // ['哈哈', '嘻嘻', 1, 2, 3, 4]
+
+    // 3. shift() 删除第1个
+    //arr.shift();
+    console.log(arr.shift()); // 哈哈
+    console.log(arr);         // ['嘻嘻', 1, 2, 3, 4]
+
+  </script>
+</head>
+<body>
+</body>
+</html>

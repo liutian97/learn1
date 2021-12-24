@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 数组去重 
+    //有一个数组['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b'] 要求去除数组中重复的元素。
+    function unique(arr) {
+      var newArr = [];
+      for (var i = 0; i < arr.length; i++) {
+        if (newArr.indexOf(arr[i]) === -1) {     // 新数组.indexOf(数组元素) === -1  新数组里面没有该元素
+          newArr.push(arr[i]);   // 筛选数组
+        }
+      }
+      return newArr;
+    }
+    var arr1 = unique(['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b']);
+    console.log(arr1); // ['c', 'a', 'z', 'x', 'b']
+
+    var arr2 = unique(['red', 'yellow', 'red']);
+    console.log(arr2); // ['red', 'yellow']
+
+  </script>
+</head>
+<body>
+</body>
+</html>

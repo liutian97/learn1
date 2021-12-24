@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // concat() 连接数组
+    // 数组.concat(数组)
+    // 原数组不改变
+    var arr1 = [1, 2, 3];
+    var arr2 = [5, 6, 7];
+    newArr = arr1.concat(arr2);  
+    console.log(newArr);         // [1, 2, 3, 5, 6, 7]
+    console.log(newArr.length);  // 6
+    console.log(arr1);           // [1, 2, 3]
+
+    // 数组.concat(数组,数据,....)
+    newArr1 = arr1.concat(arr2, 'hi', 1, 2); 
+    console.log(newArr1);   // [1, 2, 3, 5, 6, 7, 'hi', 1, 2]
+
+
+
+  </script>
+</body>
+</html>

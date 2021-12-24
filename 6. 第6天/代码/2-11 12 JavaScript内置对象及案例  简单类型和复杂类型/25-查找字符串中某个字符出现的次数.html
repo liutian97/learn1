@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    // 案例：返回字符位置
+    // 查找字符串"abcoefoxyozzopp"中所有o出现的位置以及次数
+    var str = "abcoefoxyozzopp";
+    var index = str.indexOf('o');
+    var num = 0;
+    while (index !== -1) {
+      console.log(index);                   // 3 6 9 12
+      num++;
+      index = str.indexOf('o', index + 1);
+    }
+    console.log('o出现的次数是:' + num);    // 4
+    
+    // 课后作业 ['red', 'blue', 'red', 'green', 'pink','red'], 求 red 出现的位置和次数
+    var arr = ['red', 'blue', 'red', 'green', 'pink','red'];
+    var index1 = arr.indexOf('red');
+    var num = 0;
+    while (index1 !== -1) {
+      console.log(index1);                     // 0 2 5
+      num++;
+      index1 = arr.indexOf('red', index1 + 1);
+    }
+    console.log('red 出现的次数是:' + num);    // 3
+  </script>
+</head>
+<body>
+</body>
+</html>
