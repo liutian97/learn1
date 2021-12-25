@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 400px;
+      border-bottom: 1px solid #ccc;
+      margin: 100px auto;
+      position: relative;
+    }
+    .box input {
+      width: 370px;
+      height: 30px;
+      border: 0;
+      outline: none;
+    }
+    .box img {
+      width: 24px;
+      position: absolute;
+      right: 2px;
+      top: 2px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <label for="">
+      <img src="./images/close.png" alt="" id="eye">
+    </label>
+    <input type="password" name="" id="pwd">
+  </div>
+  
+  <script>
+    // 案例：仿京东显示密码
+    // 点击图片按钮将密码框切换为文本框，并可以查看密码明文。
+    var eye = document.getElementById('eye');
+    var pwd = document.getElementById('pwd');
+    var flag = 0;
+    eye.onclick = function() {
+      if (flag == 0) {   // 判断
+        pwd.type = 'text';
+        eye.src = './images/open.png';
+        flag = 1;  // 赋值
+      } else {
+        pwd.type = 'password';
+        eye.src = './images/close.png';
+        flag = 0;
+      }  
+    }
+  </script>
+</body>
+</html>

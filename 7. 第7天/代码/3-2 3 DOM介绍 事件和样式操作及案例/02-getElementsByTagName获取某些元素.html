@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>知否知否，应是等你好久11</li>
+    <li>知否知否，应是等你好久11</li>
+    <li>知否知否，应是等你好久11</li>
+    <li>知否知否，应是等你好久11</li>
+  </ul>
+  <ul id="ol">
+    <li>生僻字</li>
+    <li>生僻字</li>
+    <li>生僻字</li>
+    <li>生僻字</li>
+  </ul>
+  
+  <script>
+    // 1.返回元素对象集合  伪数组
+    var lis =document.getElementsByTagName('li');   
+    console.log(lis);     // HTMLCollection(8) [li, li, li, li, li, li, li, li]
+    console.log(lis[0]);  // <li>...</li>
+
+    // 2. 遍历
+    for (var i = 0; i < lis.length; i++) {
+      console.log(lis[i]);
+    }
+    
+    //3. element.getElementsByTagName('标签名'); 
+    var ol = document.getElementById('ol');
+    var olLis = ol.getElementsByTagName('li');
+    console.log(olLis);   // HTMLCollection(4) [li, li, li, li]
+  </script>
+</body>
+</html>

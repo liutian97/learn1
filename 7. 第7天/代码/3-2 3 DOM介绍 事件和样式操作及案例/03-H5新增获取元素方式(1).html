@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">盒子1</div>
+  <div class="box">盒子2</div>
+  <div id="nav">
+    <ul>
+      <li>首页</li>
+      <li>产品</li>
+    </ul>
+  </div>
+
+  <script>
+    // 1. getElementsByClassName('类名') 
+    var boxs = document.getElementsByClassName('box');
+    console.log(boxs);  // HTMLCollection(2)
+
+    // 2. querySelector('选择器') 
+    var firstBox = document.querySelector('.box');
+    console.log(firstBox);   // <div class="box">盒子1</div>
+    var nav = document.querySelector('#nav');
+    console.log(nav);       // <div id="nav">...</div>
+
+    // 3. querySelectorAll('选择器')
+    var allBox = document.querySelectorAll('.box');
+    console.log(allBox);   // NodeList(2) [div.box, div.box]
+    var lis = document.querySelectorAll('li');
+    console.log(lis);      // NodeList(2) [li, li]
+    
+  </script>
+</body>
+</html>
