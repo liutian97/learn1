@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div getTime="20" data-index="2" data-list-name="andy"></div>
+  <script>
+    var div = document.querySelector('div');
+    console.log(div.getTime);                         // undefined
+    console.log(div.getAttribute('getTime'));         // 20
+    div.setAttribute('data-time', 20);
+    console.log(div.getAttribute('data-index'));      // 2
+    console.log(div.getAttribute('data-list-name'));  // andy
+    // h5新增获取自定义属性的方法 获取data-开头的
+    console.log(div.dataset);              // DOMStringMap {index: '2', listName: 'andy', time: '20'}
+    console.log(div.dataset.index);        // 2
+    console.log(div.dataset['index']);     // 2
+    //驼峰命名法
+    console.log(div.dataset.listName);     // andy
+    console.log(div.dataset['listName']);  // andy
+  </script>
+</body>
+</html>
