@@ -50,7 +50,7 @@
     var imgs = document.querySelector('.baidu').querySelectorAll('img');
     for (var i = 0; i < imgs.length; i++) {
       imgs[i].onclick = function() {
-        document.body.style.backgroundImage = 'url(' + this.src + ')' ; 
+        document.body.style.backgroundImage = 'url(' + this.src + ')' ; // url是字符串。this.scr是变量，拼接字符串
       }
     }  
   </script>

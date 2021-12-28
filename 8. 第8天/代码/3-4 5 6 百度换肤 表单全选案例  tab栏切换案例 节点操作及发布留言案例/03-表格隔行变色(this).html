@@ -102,21 +102,21 @@
     var trs = document.querySelector('tbody').querySelectorAll('tr');
     for (var i = 0; i < trs.length; i++) {
       trs[i].onmouseover = function() {
-        //trs[i].style.backgroundColor = '#bfc';
-        //this.style.backgroundColor = '#bfc';
+        // trs[i].style.backgroundColor = '#bfc';  // 错 不生效 
+        // this.style.backgroundColor = '#bfc';                // 1. 用element.style 行内样式操作
 
-        trs[i].className = 'bg';
-        //this.className = 'bg';
+        // trs[i].className = 'bg';                // 错 不生效    循环里面套事件，事件里面不能用i
+        this.className = 'bg';                                 // 2. 用element.className 类名样式操作
+
       };
       trs[i].onmouseout = function() {
-        //trs[i].style.backgroundColor = '';
+        //trs[i].style.backgroundColor = '';       // 错 不生效 
         //this.style.backgroundColor = '';
         
-        trs[i].className = '';
-        //this.className = '';
+        // trs[i].className = '';                  // 错 不生效
+        this.className = '';
       }
     }
-
   </script>
 </body>
 </html>

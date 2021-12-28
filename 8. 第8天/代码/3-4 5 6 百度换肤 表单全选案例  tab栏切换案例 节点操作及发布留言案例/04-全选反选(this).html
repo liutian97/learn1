@@ -103,23 +103,23 @@
       for (var i = 0; i < j_tbs.length; i++) {
         // console.log(j_cbAll.checked);  // 4 true
         console.log(this.checked);
-        // j_tbs[i].checked = j_cbAll.checked;
-        j_tbs[i].checked = this.checked;
+        // j_tbs[i].checked = j_cbAll.checked;     // 正确       // 循环里面套属性（checked）,当前事件调用者可以不用this
+        j_tbs[i].checked = this.checked;                      
       } 
     }
 
     // 2. 复选框全部选中，全选被选中
-    for (var i = 0; i < j_tbs.length; i++) {
+    for (var i = 0; i < j_tbs.length; i++) {        // 外循环   给每一个复选框都添加点击事件
       j_tbs[i].onclick = function() {
         var flag = true;
-        for (var i = 0; i < j_tbs.length; i++) {
+        for (var i = 0; i < j_tbs.length; i++) {    // 内循环   查看所有的复选框是否有没选中的
           if (!j_tbs[i].checked) {
             flag = false;
             break;
-          }
+          }  
         }
         j_cbAll.checked = flag;
-      }
+      }    
     }
   </script>
 </body>
