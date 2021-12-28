@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    img {
+      position: absolute;
+      top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <img src="images/angel.gif" alt="">
+  <script>
+    //案例: 跟随鼠标的天使
+    // 1. pageX/Y
+    // var pic = document.querySelector('img');
+    // document.addEventListener('mousemove', function(e) {
+    //   var e = e || window.event;
+    //   var x = e.pageX - (pic.width) / 2;
+    //   var y = e.pageY - (pic.height) / 2;
+    //   console.log('x坐标是：' + x , 'y坐标是：' + y);
+    //   pic.style.left = x + 'px'; 
+    //   pic.style.top = y + 'px';   
+    // })
+
+    // 2. offsetX/Y  clientX/Y  offsetLeft/Top
+    window.onload = function (){
+    var pic = document.querySelector('img');
+    //添加鼠标按下事件
+    pic.onmousedown = function(e){
+      var e = e || window.event;
+      //记录鼠标和拖拽物体的相对位置
+      var offsetX = event.clientX - this.offsetLeft;
+      var offsetY = event.clientY - this.offsetTop;
+      //添加鼠标移动事件
+      document.onmousemove = function(e){
+        var e = e || window.event;
+      //限制不出页面
+      var l = event.clientX - offsetX;  //距离页面左边的距离
+      var t = event.clientY - offsetY;  //距离页面顶边的距离
+      var windowWidth = document.documentElement.clientWidth || document.body.clientWidth;    //定义当前窗口的宽
+      var windowHeight = document.documentElement.clientHeight || document.body.clientHeight; //定义当前窗口的高
+      if(l < 0){     //水平的界限
+        l = 0;
+      }
+      if(l > windowWidth - pic.offsetWidth){
+        l =  windowWidth - pic.offsetWidth;
+      }
+      if(t < 0){     //垂直的界限
+        t = 0;
+      }
+      if(t > windowHeight - pic.offsetHeight){
+        t =  windowHeight - pic.offsetHeight;
+      }
+      //更新坐标位置。鼠标移动时，被拖拽物体和鼠标按下的位置保持相对距离不变
+        pic.style.left = l + "px";
+        pic.style.top = t  + "px";
+      }
+    }
+    //添加鼠标抬起事件,取消拖拽
+    document.onmouseup = function (){
+      document.onmousemove = null;
+    }
+  }
+
+  </script>
+</body>
+</html>
