@@ -31,7 +31,7 @@
     });
     // 3. 传统的注册方式
     a.onclick = function(e) {
-      // e = e || window.event;
+      e = e || window.event;
       e.preventDefault();           // （1）普通浏览器 e.preventDefault();  方法
       // e.returnValue;                // （2）低版本浏览器 ie678  returnValue  属性
       // return false;                 // （3）没有兼容性问题
