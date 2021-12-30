@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. 直接写函数
+    setTimeout(function() {
+      console.log('时间到了')
+    },1000);
+    // 2. 写函数名
+    setTimeout(callback, 2000);
+    function callback() {
+      console.log('2s到了');
+    };
+    // 3. 取字符串'函数名()' 
+    setTimeout('callback()', 2000);
+
+    // 标识符
+    var timer1 = setTimeout(function() {
+      console.log('时间到了')
+    },1000);
+    var timer2 = setTimeout(callback, 2000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 常用的键盘事件
+    // 1. keydown
+    // 传统绑定
+    document.onkeydown = function() {
+      console.log('按下down');
+    };
+    // 监听事件
+    // document.addEventListener('keydown', function() {
+    //   console.log('按下down');
+    // });
+  
+    // 2. keypress   不能识别功能键
+    document.addEventListener('keypress', function() {
+      console.log('按下press');
+    });
+  
+    // 3. keyup
+    document.addEventListener('keyup', function() {
+      console.log('抬起');
+    });
+  </script>
+</body>
+</html>

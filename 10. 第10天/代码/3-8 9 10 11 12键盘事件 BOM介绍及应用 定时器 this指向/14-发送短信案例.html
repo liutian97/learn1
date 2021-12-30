@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  手机号码： <input type="number"> <button>发送</button>
+  <script>
+    // 案例： 发送短信
+    // 点击按钮后，该按钮60秒之内不能再次点击，防止重复发送短信
+    var input = document.querySelector('number');
+    var btn = document.querySelector('button');
+    var time = 60;  // 定义剩余秒数
+    btn.addEventListener('click', function() {
+      btn.disabled = true;   // 禁用 disabled为true 
+      // this.disabled = true;  // 谁调用this指向谁 button对象
+      var timer = setInterval(function() {
+        if (time == 0) {   
+          clearInterval(timer);        // 清除定时器和复原按钮
+          btn.disabled = false;        // 不能使用this
+          btn.innerHTML = '发送';      // 不能使用this
+        } else {
+          btn.innerHTML = '剩余'+ time +'秒';
+          time--;  // 递减
+        } 
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

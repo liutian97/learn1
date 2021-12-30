@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // keyCode属性
+    // document.addEventListener('keydown', function(e) {
+
+    //   console.log('down: ' + e.keyCode);
+    // });
+    // document.addEventListener('keypress', function(e) {
+    //   console.log('press: ' + e.keyCode);
+    // });
+
+    // 判断用户按下了那个键 
+    // keyup不区分大小写
+    document.addEventListener('keyup', function(e) {
+      var e = e || window.event;
+      console.log(e.keyCode);
+      if (e.keyCode === 65) {
+        alert('按下大写A键');
+      } else {
+        alert('没有按下A键');
+      }
+    });
+  </script>
+</body>
+</html>

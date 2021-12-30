@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button>点击</button>
+  <div></div>
+  <script>
+    // 案例： 5秒钟之后自动跳转页面
+    var btn = document.querySelector('button');
+    var div = document.querySelector('div');
+    var time = 5;
+    btn.addEventListener('click', function() {
+      location.href = 'http://www.itcast.cn';    // 点击按钮跳转
+    });
+    setInterval(function() {                     // 自动跳转
+      if (time == 0) {
+      location.href = 'http://www.itcast.cn';
+      } else {
+      div.innerHTML = (time + '秒钟之后自动跳转页面');
+      time--;
+      }
+    }, 1000); 
+  </script>
+</body>
+</html>

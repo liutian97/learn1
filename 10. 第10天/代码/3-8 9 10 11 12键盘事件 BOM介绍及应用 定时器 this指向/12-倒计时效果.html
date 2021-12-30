@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      margin: 200px;
+    }
+    
+    span {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: #333;
+      font-size: 20px;
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <span class="hour">1</span>
+    <span class="minute">2</span>
+    <span class="second">3</span>
+  </div>
+  <script>
+    //案例： 倒计时
+    var hour = document.querySelector('.hour');
+    var minute = document.querySelector('.minute');
+    var second = document.querySelector('.second');
+    var deadline = +new Date('2021-12-30 23:00:00');
+    countDown();    // 先调用一次这个函数，防止第一次刷新页面有空白 
+    // 开启定时器
+    setInterval(countDown, 1000);
+    
+    function countDown() {
+      var currentTime = +new Date();
+      var timeRemaining = (deadline - currentTime) / 1000;
+      var h = parseInt(timeRemaining / 60 / 60 % 24);
+      var m = parseInt(timeRemaining / 60 % 60);
+      var s = parseInt(timeRemaining % 60);
+      h = h < 10 ? '0' + h : h;
+      m = m < 10 ? '0' + m : m;
+      s = s < 10 ? '0' + s : s;
+      hour.innerHTML = h;
+      minute.innerHTML = m;
+      second.innerHTML = s;
+    };
+  </script>
+</body>
+</html>

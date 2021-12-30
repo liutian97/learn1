@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div></div>
+  <script>
+    // 案例： 获取 URL 参数数据
+    // 主要练习数据在不同页面中的传递。
+    var div = document.querySelector('div');
+    console.log(location.search);  // login.html 中输入用户名点击提交：?uname=momo
+    // 1. 去掉？ substr('截取的起始位置', '截取几个字符');
+    var params = location.search.substr(1);   // uname=momo
+    console.log(params);
+    // 2. 利用 = 把字符串分割为数组 split('=');
+    var arr = params.split('=');
+    console.log(arr);      // ['uname', 'momo']
+    // 3.把数据写入div中
+    div.innerHTML = arr[1] + '欢迎您';
+  </script>
+</body>
+</html>
