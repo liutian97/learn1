@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      position: absolute;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: #bcf;
+    }
+    
+    span {
+      position: absolute;
+      left: 0;
+      top: 200px;
+      display: block;
+      width: 150px;
+      height: 150px;
+      background-color: #bfc;
+    }
+  </style>
+</head>
+<body>
+  <button>点击盒子才有动画</button> <br/><br/>
+  <div></div>
+  <span>盒子</span>
+  <script>
+    // 简单动画函数封装obj目标对象 target 目标位置
+    function animate(obj, target) {
+      clearInterval(obj.timer);
+      obj.timer = setInterval(function() {   //var (obj.timer) =   // 错
+        if (obj.offsetLeft >= target) {
+          clearInterval(obj.timer);
+        } 
+          obj.style.left = obj.offsetLeft + 1 + 'px';   
+      },30);
+    };
+    var div = document.querySelector('div');
+    var span = document.querySelector('span');
+    var btn = document.querySelector('button');
+    // 调用
+    animate(div, 100);
+    btn.addEventListener('click', function() {
+      animate(span, 200);
+    });
+  </script>
+</body>
+</html>

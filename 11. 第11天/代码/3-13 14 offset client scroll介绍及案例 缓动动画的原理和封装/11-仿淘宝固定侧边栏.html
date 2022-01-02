@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .slider-bar {
+      position: absolute;
+      left: 50%;
+      top: 300px;
+      margin-left: 600px;
+      width: 45px;
+      height: 130px;
+      background-color: #bfc;
+    }
+    
+    .w {
+      width: 1200px;
+      margin: 10px auto;
+    }
+    
+    .header {
+      height: 150px;
+      background-color: #bcf;
+    }
+    
+    .banner {
+      height: 250px;
+      background-color: skyblue;
+    }
+    
+    .main {
+      height: 1000px;
+      background-color: rgb(182, 216, 113);
+    }
+    
+    span {
+      display: none;
+      position: absolute;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-bar">
+    <span class="goBack">返回顶部</span>
+  </div>
+  <div class="header w">头部区域</div>
+  <div class="banner w">banner区域</div>
+  <div class="main w">主体部分</div>
+  <script>
+    // 案例：仿淘宝固定右侧侧边栏
+    // // 1. 获取元素
+    var sliderBar = document.querySelector('.slider-bar');
+    var banner = document.querySelector('.banner');
+    var main = document.querySelector('.main');
+    var goBack = document.querySelector('.goBack');
+    var bannerTop = banner.offsetTop;  // 被卷去头部的大小
+    var mainTop = main.offsetTop;
+    // 当侧边栏固定定位之后应该变化的数值
+    var sliderBarTop = sliderBar.offsetTop - bannerTop;
+    //  2. 页面滚动事件 scroll
+    document.addEventListener('scroll', function() {
+      // 2-1. 当页面被卷去的头部大于等于bannerTop时 侧边栏要改为固定定位
+      if (window.pageYOffset >= bannerTop) {
+        sliderBar.style.position = 'fixed';
+        sliderBar.style.top = sliderBarTop + 'px';
+      } else {
+        sliderBar.style.position = 'absolute';
+        sliderBar.style.top = '300px';
+      };
+      // 2-2 当页面滚动到main盒子，显示goBack模块
+      if (window.pageYOffset >= mainTop) {
+        goBack.style.display = 'block';
+      } else {
+        goBack.style.display = 'none';
+      };
+    });
+
+
+    // var sliderBar = document.querySelector('.slider-bar');
+    // var banner = document.querySelector('.banner');
+    // var main = document.querySelector('.main');
+    // var goBack = document.querySelector('.goBack');
+    // var bannerTop = banner.offsetTop;
+    // var mainTop = main.offsetTop;
+    // var sliderBarTop = sliderBar.offsetTop - bannerTop
+
+    // document.addEventListener('scroll', function() {
+    //   if (window.pageYOffset >= bannerTop) {
+    //     sliderBar.style.position = 'fixed';
+    //     sliderBar.style.top = sliderBarTop + 'px';
+    //   } else {
+    //     sliderBar.style.position = 'absolute';
+    //     sliderBar.style.top = '300px';
+    //   };
+    //   if (window.pageYOffset >= mainTop) {
+    //     goBack.style.display = 'block';
+    //   } else {
+    //     goBack.style.display = 'none';
+    //   };
+    // });
+
+
+
+
+  </script>
+</body>
+</html>

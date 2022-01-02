@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 普通函数
+    function fn() {
+      console.log(1);
+    };
+    fn();     // 1
+     // 立即执行函数
+    // (function() {})()   或   (function(){}())
+    (function(a, b) {
+      console.log(a + b);
+      var num = 10;
+    })(1, 2);  // 3   // 第二个小括号可以看做是调用函数
+
+    (function(a, b){
+      console.log(a + b);
+      var num = 10;   // 局部变量
+    }(1, 3));   // 4
+  </script>
+</body>
+</html>

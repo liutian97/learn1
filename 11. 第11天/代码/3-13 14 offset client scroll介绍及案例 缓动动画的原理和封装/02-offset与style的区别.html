@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #bfc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- <div class="box"></div> -->
+  <div class="box" style="width: 200px;"></div>
+  <script>
+    // offset与style的区别
+    // 1. width设置在css样式中
+    var box = document.querySelector('.box');
+    console.log(box.offsetWidth);  // 220
+    console.log(box.style.width);  // 获取不到css样式表中的值
+
+    // 2. width设置在行内样式表中
+    console.log(box.offsetWidth);  // 220
+    console.log(box.style.width);  // 200px
+
+    // 3. 给元素更改值
+    box.style.width = '300px';
+  </script>
+</body>
+</html>
