@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      position: absolute;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: #bcf;
+    }
+    
+    span {
+      position: absolute;
+      left: 0;
+      top: 200px;
+      display: block;
+      width: 150px;
+      height: 150px;
+      background-color: #bfc;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn500">点击盒子运动到500</button>
+  <button class="btn800">点击盒子运动到800</button>
+  <span>盒子</span>
+  <script>
+    // 缓动动画函数封装obj目标对象 target 目标位置
+    // 解决盒子两个方向都可以运动问题
+    function animate(obj, target) {
+      clearInterval(obj.timer);
+      obj.timer = setInterval(function() {
+        step = (target - obj.offsetLeft) / 10;
+        // step取整：>0, 向右移动，向上取整 ； <0, 向左移动，向下取整
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        if (obj.offsetLeft == target) {
+          clearInterval(obj.timer);
+        }
+        obj.style.left = obj.offsetLeft + step + 'px';
+      }, 15);
+    };
+    var btn500 = document.querySelector('.btn500');
+    var btn800 = document.querySelector('.btn800');
+    var span = document.querySelector('span');
+    //调用：
+    btn500.addEventListener('click', function() {
+      animate(span, 500);
+    });
+    btn800.addEventListener('click', function() {
+      animate(span, 800);
+    }); 
+  </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .slider-bar {
+      position: absolute;
+      left: 50%;
+      top: 300px;
+      margin-left: 600px;
+      width: 45px;
+      height: 130px;
+      background-color: #bfc;
+    }
+    
+    .w {
+      width: 1200px;
+      margin: 10px auto;
+    }
+    
+    .header {
+      height: 150px;
+      background-color: #bcf;
+    }
+    
+    .banner {
+      height: 250px;
+      background-color: skyblue;
+    }
+    
+    .main {
+      height: 1000px;
+      background-color: rgb(182, 216, 113);
+    }
+    
+    span {
+      display: none;
+      position: absolute;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider-bar">
+    <span class="goBack">返回顶部</span>
+  </div>
+  <div class="header w">头部区域</div>
+  <div class="banner w">banner区域</div>
+  <div class="main w">主体部分</div>
+  <script>
+    // 案例：返回顶部
+    var sliderBar = document.querySelector('.slider-bar');
+    var banner = document.querySelector('.banner');
+    var main = document.querySelector('.main');
+    var goBack = document.querySelector('.goBack');
+    var bannerTop = banner.offsetTop;
+    var mainTop = main.offsetTop;
+    var sliderBarTop = sliderBar.offsetTop - bannerTop;
+
+    document.addEventListener('scroll', function() {
+      // 1. 当页面被卷去的头部大于等于bannerTop时,侧边栏改为固定定位
+      if (window.pageYOffset >= bannerTop) {
+        sliderBar.style.position = 'fixed';
+        sliderBar.style.top = sliderBarTop + 'px';
+      } else {
+        sliderBar.style.position = 'absolute';
+        sliderBar.style.top = '300px';
+      }
+      // 2. 当页面滚动到main盒子，显示goBack模块
+      if (window.pageYOffset >= mainTop) {
+        goBack.style.display = 'block';
+      } else {
+        goBack.style.display = 'none';
+      }  
+    });
+    // 3. 当点击了"返回顶部"模块，窗口滚动到页面的最上方
+    goBack.addEventListener('click', function() {
+      animate(window, 0);  // 窗口滚动 所以对象是window
+    })
+    //缓动动画函数
+    function animate(obj, target, callback) {
+      clearInterval(obj.timer);
+      obj.timer = setInterval(function() {
+        var step = (target - window.pageYOffset) / 10;
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        if(window.pageYOffset == target) {
+          clearInterval(obj.timer);
+          // 回调函数写到定时器结束里面
+          // if (callback) {
+          //   callback(); 
+          // } 
+           // 如果有参数传入，callback为true，则调用callback();如果没有参数传入，callback为false，结束
+          callback && callback();  // 短路
+        }
+        window.scroll(0, window.pageYOffset + step);   //window.scroll(0, y); x和y 不带单位 
+      }, 15);
+    }
+  </script>
+</body>
+</html>
