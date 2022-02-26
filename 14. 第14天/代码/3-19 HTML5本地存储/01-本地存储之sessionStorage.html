@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1-本地存储之sessionStorage</title>
+</head>
+<body>
+  <input type="text">
+  <button class="set">存储数据</button>
+  <button class="get">获取数据</button>
+  <button class="remove">删除数据</button>
+  <button class="del">清空数据</button>
+
+  <script>
+    // 1-本地存储之sessionStorage
+    var input = document.querySelector('input');
+    var set = document.querySelector('.set');
+    var get = document.querySelector('.get');
+    var remove = document.querySelector('.remove');
+    var del = document.querySelector('.del');
+
+    // 存储数据：
+    set.addEventListener('click', function() {
+      var val = input.value;  // 点击，存储表单里面的值
+      sessionStorage.setItem('uname', val);
+      sessionStorage.setItem('pwd', val);
+
+    });
+    
+    // 获取数据:
+    get.addEventListener('click', function() {
+      console.log(sessionStorage.getItem('uname'));
+    });
+
+    // 删除数据：
+    remove.addEventListener('click', function() {
+      sessionStorage.removeItem('uname');
+    });
+
+    // 删除所有数据：
+    del.addEventListener('click', function() {
+      sessionStorage.clear();
+    });
+
+    // 在01的页面获取02页面的数据
+    console.log(localStorage.getItem('username'));
+  </script>
+</body>
+</html>

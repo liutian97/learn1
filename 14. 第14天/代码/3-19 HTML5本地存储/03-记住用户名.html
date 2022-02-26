@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    案例：记住用户名
+    如果勾选记住用户名， 下次用户打开浏览器，就在文本框里面自动显示上次登录的用户名 -->
+    <input type="text" id="username"><input type="checkbox" name="" id="remember"> 记住用户名
+    <script>
+      var username = document.querySelector('#username');
+      var remember = document.querySelector('#remember');
+      //  1. 先判断是否有这个用户名
+      if (localStorage.getItem('username')) {
+        username.value = localStorage.getItem('username');  // 有，在表单里面显示用户名
+        remember.checked = true;                            // 勾选复选框
+      };
+      // 2. 复选框发生改变
+      remember.addEventListener('change', function() {
+        if (remember.checked) {
+          localStorage.setItem('username', username.value);   // 复选框选中，存储
+        } else {
+          localStorage.removeItem('username');                // 复选框未选中，删除
+        }
+      })
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <input type="text" id="username"> <input type="checkbox" name="" id="remember"> 记住用户名
+    <script>
+        var username = document.querySelector('#username');
+        var remember = document.querySelector('#remember');
+        if (localStorage.getItem('username')) {
+            username.value = localStorage.getItem('username');
+            remember.checked = true;
+        }
+        remember.addEventListener('change', function() {
+            if (this.checked) {
+                localStorage.setItem('username', username.value)
+            } else {
+                localStorage.removeItem('username');
+            }
+        })
+    </script> -->
+</body>
