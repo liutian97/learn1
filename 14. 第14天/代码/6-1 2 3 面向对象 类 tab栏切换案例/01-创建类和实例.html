@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. 创建类 class   创建一个  明星类
+    class Start {
+      constructor(uname, age) {      // constructor() 方法是类的构造函数(默认方法)，用于接受传递的参数,返回实例对象
+        this.uname = uname;
+        this.age = age;
+      }
+    }
+    // 2. 利用类创建对象 new
+    var ldh = new Start('刘德华', 18);
+    var zxy = new Start('张学友', 20);
+
+    console.log(ldh);         // Start {name: '刘德华', age: 18}
+    console.log(ldh.uname);   // 刘德华
+    console.log(ldh.age);     // 18
+
+    console.log(zxy);         // Start {uname: '张学友', age: 20}
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>点击</button>
+  <script>
+    // 要求：点击按钮后，调用sing（）方法
+    // this 指向问题
+    var that;
+    var _that;
+
+    class Start {
+      // constructor里面的this指向实例对象
+      constructor(uname, age) {   
+        that = this;
+        console.log(this);   // Start {}
+
+        this.uname = uname;
+        this.age = age;
+        this.btn = document.querySelector('button');
+        this.btn.onclick = this.sing;   // 不加小括号
+      }
+      sing() {
+        // sing方法里面的this指向btn按钮 （按钮调用了此函数）
+        console.log(this);        // <button>点击</button>
+        console.log(this.uname);  // undefined （button里面没有uname属性）
+        console.log(that.uname);  // 刘德华
+      }
+      dance() {
+        // dance里面的this指向实例对象ldh （ldh调用了此函数）
+        _that = this;
+        console.log(this);    // Start {uname: '刘德华', age: 18, btn: button}
+      }
+    }
+    // 直接实例化类调用sing()方法
+    var ldh = new Start('刘德华', 18);   // undefined
+    console.log(that === ldh);     // true
+
+    ldh.dance();
+    console.log(_that === ldh);    // true
+
+
+
+  </script>
+</body>
+</html>

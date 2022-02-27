@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // (1) 类里面所有的函数不需要写function 
+  
+    // 1. 创建类
+    class Start {
+      constructor(uname, age) {   // 类的共有属性放到 constructor 里面
+        this.uname = uname;
+        this.age = age;
+      }       // (2) 多个函数方法之间不需要添加逗号分隔
+      sing(song) {
+        console.log(this.uname + '的歌是' + song)
+      }
+    }
+    // 2. 创建实例(对象)
+    var ldh = new Start('刘德华', 18);
+    console.log(ldh);       // 刘德华的歌是冰雨
+    ldh.sing('冰雨');
+    //  console.log(ldh.sing('冰雨')); 错 undefined
+
+    var zxy = new Start('张学友', 20);
+    zxy.sing('情书');       // 张学友的歌是情书
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 先定义类，再通过类实例化对象
+    class Start {
+      constructor(uname, age) {    
+        this.uname = uname;
+        this.age = age;
+        this.sing();    // 直接实例化类调用sing()方法
+      }
+      sing() {
+        console.log('hi');
+        // console.log(uname);       // 错  uname is not defined
+        // console.log(this.uname);  // 刘德华
+      }
+    }
+    
+    // var ldh = new Start('刘德华', 18);
+    // console.log(ldh);         // Start {name: '刘德华', age: 18}
+    // console.log(ldh.uname);   // 刘德华
+    // ldh.sing();               // hi
+
+    // 直接实例化类调用sing()方法
+    var ldh = new Start('刘德华', 18);   // hi
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // // 1. class创建类
+    // class Person {
+    //   constructor(uname, age) {  //  类构造函数
+    //     this.uname = uname;
+    //     this.age = age;
+    //   }
+    //   say() {
+    //     console.log('hi');
+    //   }    
+    // }
+    // // 创建实例：
+    // var p1 = new Person('刘哈哈', 18);
+    // console.log(p1);         // Person {username: '刘哈哈', age: 18}
+    // console.log(p1.uname);   // 刘哈哈
+    // p1.say();                // hi
+
+    // 2. function创建构造函数
+    function Person(username, age) {
+      this.username = username;
+      this.age = age;
+      this.sayName = function() {
+        console.log('hi,我是' + this.username);
+      };
+      // this.sayName = fun;
+    }
+    // function fun() {
+    //   console.log('hi,我是' + this.username);
+    // }
+    // 创建一个Person实例
+    var p2 = new Person('嘻嘻嘻', 5);
+    console.log(p2);             // Person {username: '嘻嘻嘻', age: 5, sayName: ƒ}
+    console.log(p2.username);    // 嘻嘻嘻
+    p2.sayName();                // hi,我是嘻嘻嘻
+
+
+  </script>
+</body>
+</html>

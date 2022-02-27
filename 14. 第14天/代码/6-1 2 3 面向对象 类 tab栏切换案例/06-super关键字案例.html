@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Father {
+      constructor(surname) {
+        this.surname = surname;
+      }
+      saySurname() {
+        console.log('我的姓是' + this.surname);
+      }
+    }  
+    class Son extends Father {            //  子类 继承 父类
+      constructor(surname, firstName) {
+        super(surname);                   // 调用父类的constructor(surname)
+        this.firstName = firstName;
+      }
+      sayFirstName() {
+        console.log("我的名字是：" + this.firstName);
+      }
+    }
+    var son = new Son('刘', "德华");
+    son.saySurname();     // 我的姓是刘
+    son.sayFirstName();   // 我的名字是：德华
+  </script>
+</body>
+</html>
