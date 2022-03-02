@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 原型对象的应用 扩展内置对象方法
+    // console.log(Array.prototype); // Array本身无 求和方法
+    // 给数组增加自定义求和的功能。
+    Array.prototype.sum = function() {
+      var sum = 0;
+      for (var i = 0; i < this.length; i++) {    // 哪个数组求sum，this指向哪个数组（实例对象）
+        sum += this[i];
+      }
+      return sum;
+    }
+    // Array.prototype = {
+    //   sum: function() {
+    //     var sum = 0;
+    //     for (var i = 0; i < this.length; i++) {    // 哪个数组求sum，this指向哪个数组（实例对象）
+    //       sum += this[i];
+    //     }
+    //     return sum;
+    //   }
+    // }
+    console.log(Array.prototype);
+    var arr = [1, 2, 3];                // arr（实例对象）通过Array的构造函数创建
+    console.log(arr.sum());             // 6
+    var arr1 = new Array(1, 2, 3, 4);   
+    console.log(arr1.sum());            // 10
+  </script>
+</body>
+</html>

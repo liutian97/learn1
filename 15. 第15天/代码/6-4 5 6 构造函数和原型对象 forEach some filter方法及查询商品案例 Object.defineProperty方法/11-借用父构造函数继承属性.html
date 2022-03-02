@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 借用 父构造函数 继承 属性
+    function Father(uname, age) {
+      this.uname = uname;                   // this 指向父构造函数的对象实例
+      this.age = age;
+    }
+    function Son(uname, age, score) {
+      Father.call(this, uname, age);        // this 指向子构造函数的对象实例  使用call方法将父构造函数的this指向改为子构造函数的对象实例
+      this.score = score;
+    }
+    var son = new Son('刘德华', 18, 100);
+    console.log(son);   // Son {uname: '刘德华', age: 18, score: 100}
+
+  </script>
+</body>
+</html>

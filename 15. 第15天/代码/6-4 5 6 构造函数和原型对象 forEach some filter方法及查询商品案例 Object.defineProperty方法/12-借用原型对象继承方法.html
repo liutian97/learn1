@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 借用 原型对象 继承 方法
+    function Father(uname, age) {
+      this.uname = uname;
+      this.age = age;
+    }
+    Father.prototype.money = function() {
+      console.log(1000);
+    }
+
+    function Son(uname, age, score) {
+      Father.call(this, uname, age);
+      this.score = score; 
+    }
+    // 继承父的方法 money
+    // Son.prototype = Father.prototype;   错 如果修改了子原型对象,父原型对象也会跟着一起变化
+    Son.prototype = new Father();          // 实例化父构造函数（创建了一个父实例化对象）
+    Son.prototype.constructor = Son;       // 利用对象的形式修改了原型对象,要用constructor 指回原来的构造函数
+    // 子构造函数专门的方法 
+    Son.prototype.exam = function() {
+      console.log('考试');
+    }
+
+    var son = new Son('刘德华', 18, 100);
+    console.log(son);
+    console.log(Father.prototype);
+    console.log(Son.prototype.constructor);  // ƒ Son(uname, age, score) { }
+
+
+    // function Father(uname, age) {
+    //   this.uname = uname;
+    //   this.age = age;
+    // }
+    // Father.prototype.money = function() {
+    //   console.log(1000);
+    // };
+    // function Son(uname, age, score) {
+    //   Father.call(this, uname, age);
+    //   this.score = score;
+    // }
+    // Son.prototype = new Father();
+    // Son.prototype.construction = Son;
+    // Son.prototype.exam = function() {
+    //   console.log('考试');
+    // }
+    // var son = new Son('刘德华', 18, 100);
+    // console.log(son);
+    // console.log(Father.prototype);
+    // console.log(Son.prototype.construction);
+  
+  </script>
+</body>
+</html>

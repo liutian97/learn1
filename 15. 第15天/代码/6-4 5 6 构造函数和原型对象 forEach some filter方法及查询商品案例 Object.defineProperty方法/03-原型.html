@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // prototype
+    // (1)公共属性定义到构造函数里
+    function Star(uname, age) {
+      this.uname = uname;
+      this.age = age;
+      // this.sing = function() {
+      //   console.log('唱歌');
+      // }
+    }
+
+    // 原型  (2)公共方法在原型对象
+    Star.prototype.sing = function() {
+      console.log('唱歌');
+    }
+    var ldh = new Star('刘德华', 18);
+    var zxy = new Star('张学友', 20);
+    ldh.sing();   
+    zxy.sing();
+    console.log(ldh.sing === zxy.sing);  // true     在构造函数false  （比较两个函数时，比较的是地址）存放在不同的内存空间，地址不一样
+    console.dir(Star);   // prototype: {constructor: ƒ}
+
+  </script>
+</body>
+</html>

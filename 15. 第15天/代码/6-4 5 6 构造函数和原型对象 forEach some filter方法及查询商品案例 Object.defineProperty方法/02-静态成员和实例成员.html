@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Star(uname, age) {
+      this.uname = uname;
+      this.age = age;
+      this.sing = function() {
+        console.log('唱歌');
+      }
+    }
+    var ldh = new Star('刘德华', 18);
+    console.log(ldh);
+    // 1. 实例成员 只能通过实例化的对象来访问
+    console.log(ldh.age);        // 18
+    ldh.sing();                  // 唱歌
+
+    // console.log(Star.age);    // 不能通过构造函数来访问
+
+    // 2. 静态成员 只能通过构造函数来访问
+    Star.sex = '男';             // 在构造函数本身上添加的成员  
+    console.log(Star.sex);       // 男
+    console.log(ldh.sex);        // undefined  不能通过对象来访问
+
+  </script>
+</body>
+</html>

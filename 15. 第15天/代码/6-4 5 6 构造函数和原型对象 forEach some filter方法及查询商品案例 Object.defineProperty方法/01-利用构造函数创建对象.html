@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 创建对象
+    // 1. new Object()
+    var obj = new Object();
+    // 2. 对象字面量
+    var obj1 = {};
+    // 3. 构造函数
+    function Star(uname, age) {
+      this.uname = uname;
+      this.age = age;
+      this.sing = function() {
+        console.log('唱歌');
+      }
+    }
+    var ldh = new Star('刘德华', 18);
+    var zxy = new Star('张学友', 20);
+    console.log(ldh);   // {uname: '刘德华', age: 18, sing: ƒ}
+    console.log(zxy);   // {uname: '张学友', age: 20, sing: ƒ}
+    ldh.sing();         // 唱歌
+    zxy.sing();         // 唱歌
+    
+  </script>
+</body>
+</html>
