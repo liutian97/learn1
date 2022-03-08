@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // fn外面的作用域可以访问fn内部的局部变量
+    function fn() {
+      var num = 10;
+      return function() {
+        console.log(num);
+      };
+    };
+    var f = fn();
+    f();
+    // 类似于：
+    // var f = function() {
+    //   console.log(num);
+    // };
+
+
+
+    分析代码
+    function fn() {
+      var num = 10;
+      // return function () {
+      //   console.log(num);
+      // }
+      function fun() {
+        console.log(num);
+      };
+      // fun();
+      return fun;   // 不直接调用，作为返回值
+    };
+    var f = fn();     // f 是一个函数
+    // 类似于：
+    // var f = function fun() {
+    //   console.log(num);
+    // };
+    f();           // 10   全局访问了局部
+
+
+  </script>
+</body>
+</html>
