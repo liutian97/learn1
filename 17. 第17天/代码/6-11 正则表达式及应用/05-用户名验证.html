@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    span {
+      color: #aaa;
+      font-size: 14px;
+    }
+    
+    .right {
+      color: green;
+    }
+    
+    .wrong {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" class="uname"> <span>请输入用户名</span>
+  <script>
+    // 案例：用户名验证
+    var uname = document.querySelector('.uname');
+    var span = document.querySelector('span');
+    var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+    uname.onblur = function() {
+      if (reg.test(this.value)) {
+        span.className = 'right';
+        span.innerHTML = '用户名格式输入正确'
+        console.log('符合正则规范');
+      } else {
+        span.className = 'wrong';
+        span.innerHTML = '用户名格式输入不正确'
+        console.log('不符合正则规范');
+      }
+    }
+
+    </script>
+</body>
+
+</html>

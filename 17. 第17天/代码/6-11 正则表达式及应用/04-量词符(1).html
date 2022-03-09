@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 量词符
+    // (1) *    >= 0
+    // var rg = /^a*$/;
+    // console.log(rg.test(''));       // true
+    // console.log(rg.test('a'));      // true
+    // console.log(rg.test('aaaa'));   // true
+
+    // (2) +   >= 1
+    // var rg = /^a+$/;
+    // console.log(rg.test(''));       // false
+    // console.log(rg.test('a'));      // true
+    // console.log(rg.test('aaaa'));   // true
+
+    // (3) ?   1 || 0
+    // var rg = /^a?$/;
+    // console.log(rg.test(''));       // true
+    // console.log(rg.test('a'));      // true
+    // console.log(rg.test('aaaa'));   // false
+
+    // (4) {3} 重复3次
+    // var rg = /^a{3}$/;
+    // console.log(rg.test(''));       // false
+    // console.log(rg.test('a'));      // false
+    // console.log(rg.test('aaaa'));   // false
+    // console.log(rg.test('aaa'));    // true
+
+    // (5) {3,}  >=3次
+    // var rg = /^a{3,}$/;
+    // console.log(rg.test(''));       // false
+    // console.log(rg.test('a'));      // false
+    // console.log(rg.test('aaaa'));   // true
+    // console.log(rg.test('aaa'));    // true
+
+    // (6) {3,6}  >=3次 且 <=6
+    var rg = /^a{3,6}$/;
+    console.log(rg.test(''));          // false
+    console.log(rg.test('a'));         // false
+    console.log(rg.test('aaaa'));      // true
+    console.log(rg.test('aaa'));       // true
+    console.log(rg.test('aaaaaaa'));   // false
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+</html>
