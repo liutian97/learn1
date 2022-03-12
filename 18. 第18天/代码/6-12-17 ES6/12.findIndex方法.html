@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>findIndex方法</title>
+</head>
+<body>
+	<script type="text/javascript">
+    // findIndex((ele, index, arr) => {});  返回第一个符合条件的数组成员的索引
+    let arr = [1, 5, 10, 15];
+    let index = arr.findIndex(ele => ele > 9);
+    console.log(index);  // 2
+
+    let index1 = arr.findIndex(ele => ele > 20);
+    console.log(index1); // -1
+
+    // let index = arr.findIndex(function(value, index, arr) {
+    //   return value > 9;
+    // });
+
+	</script>
+</body>
+</html>

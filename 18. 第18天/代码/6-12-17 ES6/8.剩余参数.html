@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>剩余参数</title>
+</head>
+<body>
+	<script type="text/javascript">
+    // 剩余参数语法
+    // (1) 将一个不定数量的参数表示为一个数组
+    const sum = (...args) => {   // 箭头函数没有arguments对象
+      let result = 0;
+      // args.forEach((item) => {
+      //   result += item;  
+      // });
+      args.forEach(item => result += item);
+      return result;
+    };
+    console.log(sum(10, 20));        // 30
+    console.log(sum(10, 20, 30));    // 60
+
+
+    function sum1 (first, ...args) {
+      console.log(first); // 10
+      console.log(args); // [20, 30] 
+    }
+    sum1(10, 20, 30);
+
+    // (2) 剩余参数和解构配合使用
+    let arr = ['张三' , '李四', '王五'];
+    let [s1, ...s2] = arr;
+    console.log(s1);  // 张三
+    console.log(s2);  // (2) ['李四', '王五']
+
+	</script>
+</body>
+</html>

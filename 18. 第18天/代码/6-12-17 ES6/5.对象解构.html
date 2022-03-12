@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象解构</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// (1)对象解构允许使用变量的名字匹配对象的属性名 匹配成功 将对象的属性值赋值给变量
+    let person = {name: 'liLi', age: 18, sex: '女'};
+    let {name, age, sex} = person;
+    // let {age, sex, name} = person; // 顺序可以变
+    console.log(name);  // liLi
+    console.log(age);   // 18
+    console.log(sex);   // 女
+
+		// (2)(注意)name,age是匹配的模式，myName,myAge才是变量。真正被赋值的是变量myName，⽽不是模式name
+		let {name: myName, age: myAge} = person;
+		console.log(myName); // liLi
+		console.log(myAge);  // 18
+
+    // (3)默认值生效的条件是，对象的属性值严格等于undefined
+    let {x = 3} = {x: undefined};
+    console.log(x); // 3
+    let {y = 3} = {y: null};
+    console.log(y); // null
+
+    // (4)对数组进行对象属性的解构
+    let arr = [1, 2, 3];
+    let {0: first, [arr.length - 1]: last} = arr;  // 方括号这种写法，属于“属性名表达式”
+    console.log(first); // 1
+    console.log(last);  // 3
+
+	</script>
+</body>
+</html>

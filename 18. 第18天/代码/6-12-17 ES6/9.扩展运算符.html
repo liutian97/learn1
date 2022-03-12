@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>扩展运算符</title>
+</head>
+<body>
+	<div>1</div>
+	<div>4</div>
+	<div>3</div>
+	<div>6</div>
+	<div>2</div>
+	<div>5</div>
+	<script type="text/javascript">
+		// 扩展运算符
+    // (1) 将数组 对象 拆分成以逗号分隔的参数序列
+    let arr = ["a", "b", "c"];
+    // ...arr   "a", "b", "c"
+    console.log(...arr);         // a b c    输出结果的逗号被当作console.log方法的参数分隔符
+    console.log("a", "b", "c");  // a b c
+
+    // (2) 合并数组
+    let arr1 = [1, 2, 3];
+    let arr2 = [4, 5, 6];
+    // 方法1：
+    let arr3 = [...arr1, ...arr2];
+    console.log(arr3);  // (6) [1, 2, 3, 4, 5, 6]
+    // 方法2：
+    arr1.push(...arr2);
+    console.log(arr1);  // (6) [1, 2, 3, 4, 5, 6]
+    // 不使用扩展符
+    // Array.prototype.push.apply(arr1, arr2);          [].push.apply(arr1, arr2);
+    // console.log(arr1); // (6) [1, 2, 3, 4, 5, 6]
+
+    // (3) 伪数组转换为真正的数组
+    var divs = document.getElementsByTagName('div');
+    console.log(divs);     // HTMLCollection(6) [div, div, div, div, div, div]
+    var ary = [...divs];
+    console.log(ary);      // (6) [div, div, div, div, div, div]
+    ary.push('a');
+    console.log(ary);      // (7) [div, div, div, div, div, div, 'a']
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Set</title>
+</head>
+<body>
+	<script type="text/javascript">
+    // (1) 生成 Set 数据结构
+    const s = new Set();
+    console.log(s.size);        // 0
+
+    // (2) 数组作为参数，用来初始化  
+    const s1 = new Set(['a', 'b', 'c']);
+    console.log(s1);            // Set(3) {'a', 'b', 'c'}
+
+    // (3) 数组去重  [...new Set(arr)]
+    const s2 = new Set(["a","a","b","b"]);
+		console.log(s2.size)        // 2
+    const arr = [...s2];
+    console.log(arr);           // (2) ['a', 'b']
+
+    // (3) 实例方法
+    // add(); 返回 Set 结构本身
+    const s3 = new Set();
+    s3.add('a').add('b');
+    console.log(s3);           // Set(2) {'a', 'b'}
+
+    // delete();  返回布尔值
+    const r = s3.delete('a');
+    console.log(s3);           // Set(1) {'b'}
+    console.log(r);            // true
+
+    // has(); 返回布尔值
+    const r1 = s3.has('b');
+    console.log(r1);           // true
+
+    // clear(); 没有返回值
+    s3.clear();
+    console.log(s3.size);      // 0
+    
+
+    // (4) 遍历
+    const s4 = new Set(['a', 'b', 'c']);
+    s4.forEach(value => {
+      console.log(value);
+    })
+		
+
+	</script>
+</body>
+</html>

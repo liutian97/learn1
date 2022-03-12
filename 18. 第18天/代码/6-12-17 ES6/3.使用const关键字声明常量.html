@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用const关键字声明常量</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// const关键字声明的常量
+    // (1)具有块级作用域
+		// if (true) {
+		// 	const a = 10;
+		// 	if (true) {
+		// 		const a = 20;
+		// 		console.log(a);  // 20
+		// 	}
+		// 	console.log(a);    // 10
+		// }
+		// console.log(a);      // a is not defined
+
+		// (2) 声明常量必须赋初始值
+    // const PI;  // 错
+		const PI = 3.14;
+		
+		// (3) 常量声明后值不可更改 
+    // (3)-1 简单类型（数值 字符串 布尔值）
+		// const PI = 3.14;
+		// PI = 100;  // 常量不可再次赋值
+    // (3)-2 复合类型（数组 对象）
+		const ary = [100, 200];
+		ary[0] = 123;
+    console.log(ary);  // (2) [123, 200]
+		ary = [1, 2]
+		console.log(ary);  // 错
+	</script>
+</body>
+</html>

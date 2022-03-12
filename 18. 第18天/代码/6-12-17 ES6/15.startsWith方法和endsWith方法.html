@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>startsWith方法和endsWith方法</title>
+</head>
+<body>
+	<script type="text/javascript">
+    // includes(), startsWith(), endsWith()
+		let str = 'Hello ECMAScript 2015';
+    let r = str.includes('o');
+    console.log(r);   // true
+
+		let r1 = str.startsWith('Hello');
+		console.log(r1);  // true
+
+		let r2 = str.endsWith('2015');
+		console.log(r2);  // true
+
+    let r3 = str.endsWith('2015', 16);  // 第二个参数是字符串末尾的位置
+		console.log(r3); // false
+
+	</script>
+</body>
+</html>

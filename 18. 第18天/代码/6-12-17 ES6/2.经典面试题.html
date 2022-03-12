@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>经典面试题</title>
+</head>
+<body>
+	<script type="text/javascript">
+    // (1)var声明 变量i是全局的，函数执行时输出的都是全局作用域下的i值
+		// var arr = [];
+		// for (var i = 0; i < 10; i++) {
+		// 	arr[i] = function () {
+		// 		console.log(i);    // 循环内被赋给数组arr的函数内部的console.log(i)，里面的i指向的就是全局的i（函数内部没有定义变量i，向上层作用域中查找，循环时创建的i）
+		// 	}
+		// }
+		// arr[0]();  // 10
+		// arr[6]();  // 10
+    
+    // (2)let声明
+    let arr = [];
+		for (let i = 0; i < 10; i++) {
+			arr[i] = function () {
+				console.log(i);    // 每次循环都会产生一个块级作用域
+			}
+		}
+		arr[0]();  // 0
+		arr[6]();  // 6
+
+	</script>
+</body>
+</html>

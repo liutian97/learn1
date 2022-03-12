@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>find方法</title>
+</head>
+<body>
+	<script type="text/javascript">
+    // find((ele, index, arr) => {});  找出第一个返回值为true的成员，然后返回该成员
+    var arr = [{
+      id: 1,
+      name: '张三'
+    }, {
+      id: 2,
+      name: '李四'
+    }];
+    let target = arr.find(ele => ele.id == 1);
+    console.log(target);  // {id: 1, name: '张三'}
+
+    let target1 = arr.find(ele => ele.id == 3);
+    console.log(target1); // undefined
+
+	</script>
+</body>
+</html>

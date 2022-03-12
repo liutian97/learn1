@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>箭头函数面试题</title>
+</head>
+<body>
+	<script type="text/javascript">
+    // 问：调用结果？
+    var age = 18;
+    var obj = {
+      age: 20,
+      say: () => {
+        alert(this.age);  // 箭头函数定义在对象里，对象不能产生作用域，实际上箭头函数定义在全局作用域，this指向Window
+      },
+      // say1: function() {         
+      //   console.log(this.age);
+      // }
+    }
+    obj.say();  // 18
+                // undefined    Window 没有age属性 （没有全局变量age时）
+    
+    // obj.say1(); // 20   对象的方法调用function函数，this指该方法所属对象 (注意)
+
+	</script>
+</body>
+</html>

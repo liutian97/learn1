@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建数组的静态方法</title>
+</head>
+<body>
+	<script type="text/javascript">
+    // Array构造函数方法  Array.from()  Array.of()
+    // Array.from()  类数组转化为数组
+    var arrayLike = {
+      '0': 'a',
+      '1': 'b',
+      '2': 'c',
+      length: 3
+    };
+    console.log(arrayLike);           // {0: 'a', 1: 'b', 2: 'c', length: 3}
+    var arr = Array.from(arrayLike);
+    console.log(arr);                 // (3) ['a', 'b', 'c']
+    
+		// 传入第二个参数（映射函数）
+		var arrayLike1 = {
+			"0": "1",
+			"1": "2",
+			length: 2
+		}
+    var arr1 = Array.from(arrayLike1, item => item * 2);
+    console.log(arr1);  // (2) [2, 4]
+
+    // Array.of()   将一组参数转化为数组
+    console.log(Array.of(1, 2, 3, 4));  // (4) [1, 2, 3, 4]
+
+	</script>
+</body>
+</html>
