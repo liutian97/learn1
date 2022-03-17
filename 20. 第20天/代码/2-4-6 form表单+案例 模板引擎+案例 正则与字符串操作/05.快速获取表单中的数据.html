@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./lib/jquery.js"></script>
+</head>
+<body>
+  
+  <form action="/login" method="post" id="f1">
+    <input type="text" name="user_name" />
+    <input type="password" name="password" >
+    <button type="submit">提交</button>
+  </form>
+
+  <script>
+    $(function() {
+      // serialize()
+      // (1) 方法1
+      // $('#f1').submit(function(e) {
+      //   e.preventDefault();
+      //   var data = $(this).serialize();   // $(this)绑定事件的对象
+      //   console.log(data);  //user_name=zs&password=123
+      // })
+
+      // (2) 方法2
+      $('#f1').on('submit', function(e) {
+        e.preventDefault();
+        var data = $('#f1').serialize();
+        console.log(data);  // user_name=zs&password=123
+      })
+
+    })
+  </script>
+
+  
+</body>
+</html>

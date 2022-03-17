@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // replace(oldStr/正则，newStr)
+
+    var str = '<div>{{name}}</div>';
+    // name 替换 {{name}}
+    
+    // (1) 方法一：通过exec()函数提取分组后用数组元素形式进行replace()
+    var pattern = /{{([a-zA-Z]+)}}/;
+    var result = pattern.exec(str);
+    // console.log(result);  // ['{{name}}', 'name', index: 5, input: '<div>{{name}}</div>', groups: undefined]
+    var str1 = str.replace(result[0], result[1]);
+    console.log(str1);       // <div>name</div>
+    
+    // (2) 方法二： 直接用正则模式替换
+    var str2 = str.replace(/{{[a-zA-Z]+}}/, 'name');
+    console.log(str2);
+
+
+    // var str = '<div>我是{{name}}</div>'
+    // var pattern = /{{([a-zA-Z]+)}}/
+
+    // var patternResult = pattern.exec(str)
+    // // console.log(patternResult)
+    // str = str.replace(patternResult[0], patternResult[1])
+
+    // console.log(str)
+  </script>
+</body>
+
+</html>

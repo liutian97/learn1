@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 正则表达式中 ( ) 包起来的内容表示一个分组
+    var str = '<div>我是{{name}}</div>';    // {{}} 占位符 里面以后以实际内容填充
+    var pattern = /{{([a-zA-Z]+)}}/        
+    var result = pattern.exec(str);
+    console.log(result);   // ['{{name}}', 'name', index: 7, input: '<div>我是{{name}}</div>', groups: undefined]
+                            // 数组第二个值为 提取的内容 
+
+    var str1 = 'mom and dad and baby';
+    var pattern1 = /mom (and dad (and baby)?)?/gi;
+    var result1 = pattern1.exec(str1);
+    console.log(result1);        // ['mom and dad and baby', 'and dad and baby', 'and baby', index: 0, input: 'mom and dad and baby', groups: undefined]
+    console.log(result1.index);  // 0                     字符串中匹配模式的起始位置
+    console.log(result1.input);  // mom and dad and baby  要查找的字符串
+    console.log(result1[0]);     // mom and dad and baby  匹配的整个字符串
+    console.log(result1[1]);     // and dad and baby      匹配第一个捕获组的字符串
+    console.log(result1[2]);     // and baby              匹配第二个捕获组的字符串
+
+  </script>
+</body>
+
+</html>

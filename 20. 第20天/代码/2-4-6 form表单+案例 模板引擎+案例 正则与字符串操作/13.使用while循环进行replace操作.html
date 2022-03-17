@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 使用while循环replace()
+    var str = '<div>{{name}}今年{{ age }}岁了</div>';
+    var pattern = /{{\s*([a-zA-Z]+)\s*}}/
+
+    var patternResult = null;   // 定义patternResult默认为null（定义将来要保存对象值的变量时，使用null来初始化）
+    while(patternResult = pattern.exec(str)) {  // 匹配结果赋值给patternResult,当为null时,转为布尔值为false 终止循环
+      str = str.replace(patternResult[0], patternResult[1]);
+    }
+    console.log(str);  // <div>name今年age岁了</div>
+  </script>
+</body>
+
+</html>
