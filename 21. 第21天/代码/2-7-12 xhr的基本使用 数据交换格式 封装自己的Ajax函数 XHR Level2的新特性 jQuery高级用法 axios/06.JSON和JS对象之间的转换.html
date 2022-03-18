@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // (1) JSON字符串转JS对象 JSON.parse()  JSON反序列化
+    var jsonStr = '{"a": "Hello", "b": "World"}';
+    var obj = JSON.parse(jsonStr);
+    console.log(obj);   // {a: 'Hello', b: 'World'}
+
+    // (2)JS对象转JSON字符串 JSON.stringify()  JSON序列化
+    var obj1 = { a: 'Hello', b: 'World', c: false};
+    var jsonStr1 = JSON.stringify(obj1);
+    console.log(jsonStr1);           // {"a":"Hello","b":"World","c":false}
+    console.log(typeof jsonStr1);    // string
+
+  </script>
+</body>
+
+</html>

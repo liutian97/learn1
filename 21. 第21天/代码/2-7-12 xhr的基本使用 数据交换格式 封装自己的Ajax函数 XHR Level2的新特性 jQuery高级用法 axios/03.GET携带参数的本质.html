@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/jquery.js"></script>
+</head>
+
+<body>
+  <script>
+    // jQuery 中发起 Ajax 请求
+    // (1) $.get()请求
+
+    // $.get('http://www.liulongbin.top:3006/api/getbooks', {id: 1, bookname: '西游记'}, function(res) {
+    //   console.log(res); // Request URL: http://www.liulongbin.top:3006/api/getbooks?id=1&bookname=%E8%A5%BF%E6%B8%B8%E8%AE%B0
+    // })
+
+    // (2) $.ajax()
+    $.ajax({
+      method: 'GET',
+      url: 'http://www.liulongbin.top:3006/api/getbooks',
+      data: {
+        id: 1,
+        bookname: '西游记'
+      },
+      success: function(res) {
+        console.log(res);
+      }
+    })
+  </script>
+</body>
+
+</html>

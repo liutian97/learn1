@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // JSON.parse()应用：如果服务器响应的数据是JSON格式的字符串，JSON格式的字符串将转换为对象再进一步操作
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks');
+    xhr.send();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText);
+        console.log(typeof xhr.responseText);  // string
+        // JSON格式的字符串将转换为对象
+        var result = JSON.parse(xhr.responseText);
+        console.log(result);  // {status: 200, msg: '获取图书列表成功', data: Array(7)}
+
+      }
+    }
+
+  </script>
+</body>
+
+</html>
