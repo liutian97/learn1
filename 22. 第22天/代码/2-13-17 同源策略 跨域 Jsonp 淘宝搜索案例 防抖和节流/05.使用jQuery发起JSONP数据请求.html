@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/jquery.js"></script>
+</head>
+
+<body>
+  <script>
+
+    $(function() {
+      // jQuery的 $.ajax() 函数，发起 JSONP 数据请求
+
+      $.ajax({
+        url: 'http://www.liulongbin.top:3006/api/jsonp?name=zs&age=20',    // ?name=zs&age=20 是通过JSON发送到服务器的数据
+        dataType: 'jsonp',      // 发起JSONP的数据请求  // 不是Ajax的请求
+        jsonp: 'callback',      // 发送到服务端的参数名称
+        jsonpCallback: 'abc',   // 自定义回调函数名称
+        success: function(res) {
+          console.log(res); // {message: 'JSONP 请求测试成功！您指定的回调函数名称是 jQuery341044505127130636013_1647652081708', data: {…}}
+        }
+    })
+
+    })
+    
+  </script>
+</body>
+
+</html>

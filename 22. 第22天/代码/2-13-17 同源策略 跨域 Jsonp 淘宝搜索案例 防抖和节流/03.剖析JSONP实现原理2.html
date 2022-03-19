@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 将函数调用放到一个单独的js文件 -->
+  <!-- 通过callback指定回调函数的名称 （查询字符串）-->
+
+  <!-- (1) 定义函数 -->
+  <script>
+    function abc(data) {
+      console.log('拿到了数据：');    // 拿到了数据：
+      console.log(data);             // {name: 'zs', age: 16}
+    }
+  </script>
+
+  <!-- (2) 引入调用函数的js文件 -->
+  <script src="./js/getdata.js?callback=abc"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./lib/jquery.js"></script>
+</head>
+<body>
+  
+  <button id="btnJSONP">JQuery中发起JSONP请求的过程</button>
+  <!-- 发起 JSONP 请求时，动态向 <header> 中 append 一个 <script> 标签； -->
+  <!-- JSONP 请求成功后，动态从 <header> 中移除刚才 append 进去的 <script> 标签； -->
+
+
+  <script>
+    $(function() {
+      $("#btnJSONP").on('click', function(){
+        $.ajax({
+          url: 'http://www.liulongbin.top:3006/api/jsonp?address=中国&location=北京',
+          dataType: 'jsonp',
+          jsonpCallback: 'abc',
+          success: function(res) {
+            console.log(res);
+          }
+        })
+      })
+      
+    })
+  </script>
+</body>
+</html>
