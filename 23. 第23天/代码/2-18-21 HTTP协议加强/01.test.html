@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/jquery.js"></script>
+</head>
+
+<body>
+  <button id="btnGET">GET请求</button>
+  <button id="btnPOST">POST请求</button>
+
+  <button id="btn-xhr-POST">使用xhr发起POST数据请求</button>
+
+  <script>
+    $(function () {
+      // 请求行：Network-Request Headers（View source）- 第一行
+
+      // 发起 GET 请求
+      // 请求行： GET /api/get?name=zs&age=20 HTTP/1.1
+      $('#btnGET').on('click', function () {
+        $.ajax({
+          method: 'GET',
+          url: 'http://www.liulongbin.top:3006/api/get',
+          data: {
+            name: 'zs',
+            age: 20
+          },
+          success: function (res) {
+            console.log(res)
+          }
+        })
+      })
+
+      // 发起 POST 请求
+      $('#btnPOST').on('click', function () {
+        $.ajax({
+          method: 'POST',
+          url: 'http://www.liulongbin.top:3006/api/post',
+          data: {
+            name: 'zs',
+            age: 20
+          },
+          success: function (res) {
+            console.log(res)
+          }
+        })
+      })
+
+      // 使用xhr发起POST数据请求
+      $("#btn-xhr-POST").on('click', function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://www.liulongbin.top:3006/api/post');
+        xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        xhr.send('name=zs&age=12');
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+          }
+        }
+      })
+
+    })
+
+  
+  </script>
+</body>
+
+</html>
