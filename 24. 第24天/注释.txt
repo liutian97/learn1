@@ -1,0 +1,2 @@
+和 Git+GitHub文件夹 同目录下的learngit 是为了模拟多人协作时，从GitHub上克隆learngit远程库的本地库。(廖雪峰网站的练习)
+练习的内容在远程库project_1，project_2(黑马)
