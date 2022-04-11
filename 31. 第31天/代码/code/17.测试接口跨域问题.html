@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <button id="btnGET">GET</button>
+  <button id="btnPOST">POST</button>
+  <button id="btnDelete">DELETE</button>
+  <button id="btnJSONP">JSONP</button>
+
+
+
+  <!-- 用jquery的Ajax请求 调用 15文件创建的接口 -->
+  <!-- (测试15文件创建的接口服务器能否被访问) -->
+  <script>
+    $(function () {
+      // (注意：) 1,2 是以 file 协议进行访问的，但请求的接口是 http 协议的，跨域（网页和接口之间）
+      // 1. 测试 GET 接口 
+      $('#btnGET').on('click', function () {
+        $.ajax({
+          type: 'GET',
+          url: 'http://127.0.0.1/api/get',
+          data: { name: 'zs', age: 12 },
+          success: function (res) {
+            console.log(res)
+          }
+        })
+      })
+
+      // 2. 测试 POST 接口
+      $('#btnPOST').on('click', function () {
+        $.ajax({
+          type: 'POST',
+          url: 'http://127.0.0.1/api/post',
+          data: { bookname: '水浒传', author: '施耐庵' },
+          success: function (res) {
+            console.log(res)
+          }
+        })
+      })
+
+      //  3. 测试 DELETE 接口
+      $('btnDelete').on('click', function () {
+        $.ajax({
+          type: 'DELETE',
+          url: 'http://127.0.0.1/api/delete',
+          success: function (res) {
+            console.log(res)
+          }
+        })
+      })
+
+      // 4. 在网页中使用 jQuery 发起 JSONP 请求
+      $('btnJSONP').on('click', function () {
+        $.ajax({
+          method: 'GET',
+          url: 'http://127.0.0.1/api/jsonp',
+          dataType: 'jsonp', // 发起JSONP请求
+          success: function (res) {
+            console.log(res)
+          }
+        })
+      })
+
+    })
+  </script>
+
+</body>
+
+</html>
