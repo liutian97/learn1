@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      border: 1px solid #aad;
+      width: 100px;
+      height: 100px;
+    }
+
+    .error {
+      background-color: aqua;
+    }
+
+    .test {
+      color:red
+    }
+
+    .base {
+      font-size: 28px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- 样式绑定相关语法细节： -->
+    <!-- (1) 对象绑定和数组绑定可以结合使用 -->
+    <div v-bind:class="[activeClass, errorClass, {test: isTest}]">测试样式</div>
+    <!-- (2) class绑定的值可以简化操作 -->
+    <!-- (2-1) 简化为数组 -->
+    <div v-bind:class="arrClasses">简化为数组</div>
+    <!-- (2-2) 简化为对象 -->
+    <div v-bind:class="objClasses">简化为对象</div>
+    <!-- (3)  默认的class如何处理？默认的class会保留-->
+    <div class="base" v-bind:class="objClasses">保留默认的class</div>
+    <!-- 相当于 <div class="base active error" >保留默认的class</div> -->
+
+    <button v-on:click="handle">切换</button>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    // class样式绑定
+    var vm= new Vue({
+      el: '#app',
+      data: {
+        activeClass: 'active',
+        errorClass: 'error',
+        isTest: true,
+        arrClasses: ['active', 'error'], // class绑定的值简化为数组
+        objClasses: {
+          active: true, 
+          error: true
+        },                               // class绑定的值简化为对象
+      },
+      methods: {
+        handle: function() {
+          // this.isTest = false
+          // 通过设置对象的属性值改变样式
+          this.objClasses.error = false  // 第三个div 的 error 样式不显示
+        }
+      }
+    })
+  </script>
+</body>
+</html>

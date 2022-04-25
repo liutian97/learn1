@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{num}}</div>
+
+    <div v-on:click="handle0">
+      <!-- 不阻止冒泡的情况下，当点击按钮1时，num也会++（num++写在handle0函数里，并没有写在handle1函数中） -->
+      <!-- (1) .stop 阻止冒泡 -->
+      <button v-on:click.stop="handle1">按钮1</button>
+    </div>
+
+    <div>
+      <!-- (2) .prevent 阻止默认行为 -->
+      <a href="http://www.baidu.com" v-on:click.prevent="handle2">百度</a>
+    </div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        num: 0
+      },
+      methods: {
+        handle0: function () {
+          this.num++
+        },
+        handle1: function () {  // 因为事件直接绑定函数名称，默认会传递事件对象event作为事件函数的第一个参数
+          // 传统方式阻止冒泡
+          // event.stopPropagation()
+        },
+        handle2: function () {
+          // 传统方式阻止默认行为
+          // event.preventDefault()
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>

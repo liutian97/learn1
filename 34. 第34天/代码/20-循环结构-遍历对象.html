@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- (1) v-for 遍历对象 -->
+    <div v-for="(value, key, index) in obj">{{value + '---' + key + '---' + index}}</div>  <br/>
+    <!-- (2) v-if和v-for结合使用 -->
+    <!-- 遍历出值为18的一项 -->
+    <div v-if="v==18" v-for="(v,k,i) in obj">{{v + '---' + k + '---' + i}}</div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    //  （1）使用原生js遍历对象 （for...in） 
+    var obj = {
+      uname: 'zhangsan',
+      age: 18,
+      gender: 'male'
+    }
+    for(key in obj) {
+      console.log(key, obj[key]);
+    }
+
+    // （2）Vue
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        obj: {
+          uname: 'zhangsan',
+          age: 18,
+          gender: 'male'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

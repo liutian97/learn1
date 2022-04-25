@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- (1) style 样式(对象形式) -->
+    <!-- <div v-bind:style="{css属性名1: data中定义的属性名1, css属性名2: data中定义的属性名2}"></div> -->
+    <div v-bind:style="{border: borderStyle, width: widthStyle, height: heightStyle}">对象形式</div>
+    <!-- (2) style 样式对象形式简写 -->
+    <div v-bind:style="objStyles">对象形式简写</div>
+    <!-- (3)style 样式数组形式（后面会覆盖前面的） -->
+    <div v-bind:style="[objStyles, overrideStyles]">数组形式</div>
+
+    <button v-on:click="handle">切换</button>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    // style 样式绑定
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        borderStyle: '1px solid #bcf',
+        widthStyle: '100px',
+        heightStyle: '200px',
+        objStyles: {                       // style 样式对象形式简写
+          border: '1px solid green',
+          weight: '150px',
+          height: '150px',
+        },
+        overrideStyles: {                  //style 样式数组形式简写
+          border: '5px solid orange',
+          backgroundColor: '#bcf'
+        }
+      },
+      methods: {
+        handle: function() {
+          this.heightStyle = '100px';     // 第一个div的高改变
+          this.objStyles.width = '100px'; // 第二三个div的宽改变
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>选项卡案例</title>
+  <style>
+    .tab ul {
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .tab ul li {
+      box-sizing: border-box;
+      padding: 0;
+      float: left;
+      width: 100px;
+      height: 45px;
+      line-height: 45px;
+      list-style: none;
+      text-align: center;
+      border-top: 1px solid blue;
+      border-right: 1px solid blue;
+      cursor: pointer;
+    }
+  
+    .tab ul li:first-child {
+      border-left: 1px solid blue;
+    }
+  
+    .tab ul li.active {
+      background-color: orange;
+    }
+  
+    .tab div {
+      width: 500px;
+      height: 300px;
+      display: none;
+      text-align: center;
+      font-size: 30px;
+      line-height: 300px;
+      border: 1px solid blue;
+      border-top: 0px;
+    }
+  
+    .tab div.current {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- 传统方式实现UI效果 -->
+  <!-- <div id="app">
+    <div class="tab">
+      <ul>
+      <li class="active">apple</li>
+        <li>orange</li>
+        <li>lemon</li>
+      </ul>
+    </div>
+    <div class="current">
+      <img src="img/apple.png">
+    </div>
+    <div>
+      <img src="img/orange.png">
+    </div>
+    <div>
+      <img src="img/lemon.png">
+    </div>
+  </div> -->
+    
+    <!-- 基于Vue模板语法形式的UI结构（基于数据重构UI效果） -->
+    <!-- v-on:click 绑定切换事件， :class 加入样式属性， v-for 遍历数组元素 -->
+    <div id="app">
+      <div class="tab">
+        <ul>
+          <li v-on:click="change(index)" :class="currentIndex==index?'active':''" :key="item.id"
+            v-for=" (item, index) in list">{{item.title}}</li>
+        </ul>
+        <div :class='currentIndex==index?"current":""' :key='item.id' v-for='(item, index) in list'>
+          <img :src="item.path">
+        </div>
+      </div>
+    </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    // 选项卡案例
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        currentIndex: 0, // 选项卡当前的索引
+        list: [{
+          id: 1,
+          title: 'apple',
+          path: 'img/apple.png'
+        }, {
+          id: 2,
+          title: 'orange',
+          path: 'img/orange.png'
+        }, {
+          id: 3,
+          title: 'alemon',
+          path: 'img/lemon.png'
+        }]
+      },
+      // 处理事件绑定和js控制逻辑
+      methods: {
+        change: function(index) {
+          // 实现选项卡切换操作：本质是通过currentIndex操作类名
+          this.currentIndex = index
+        }
+      }
+    })
+  </script>
+</body>
+</html>

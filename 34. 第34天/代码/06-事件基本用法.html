@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{num}}</div>
+    <div>
+      <button v-on:click="num++">按钮1</button>
+      <button @click="num++">按钮2</button>
+      <button @click="handle">按钮3</button>
+      <button @click="handle()">按钮4</button>
+    </div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        num: 0
+      },
+      // methods  中 主要是定义一些函数
+      methods: {
+        handle: function () {
+          // num++  // 错 num is not defined
+          // 这里的this是Vue的实例对象
+          console.log(this === vm)  // true
+          this.num++
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

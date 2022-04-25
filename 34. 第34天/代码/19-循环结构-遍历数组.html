@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>水果列表</div>
+    <br>
+      <!-- (1) v-for 遍历数组 -->
+      <li v-for="item in fruits">{{item}}</li> </br>
+      <!-- (2) 带索引 -->
+      <li v-for="(item, index) in fruits">{{item + '---' + index}}</li> </br>
+      <!-- (3) v-for 遍历数组（数组含有对象） -->
+      <li v-for="(item, index) in myFruits">
+        <span>{{item.ename}}</span>
+        <span>-----</span>
+        <span>{{item.cname}}</span>
+      </li> </br>
+      <!-- (4) key的作用：帮助Vue区分不同的元素，从而提高性能 -->
+        <li :key='item.id' v-for="(item, index) in myFruits">
+          <span>{{item.ename}}</span>
+          <span>-----</span>
+          <span>{{item.cname}}</span>
+        </li>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    // 循环结构
+    var vm =new Vue({
+      el: '#app',
+      data: {
+        fruits: ['apple', 'orange', 'banana'], // 简单数组
+        myFruits: [{                           // 数组中带对象
+          id: 1,
+          ename: 'apple',
+          cname: '苹果',
+        }, {
+          id: 2,
+          ename: 'orange',
+          cname: '橘子',
+        }, {
+          id: 3,
+          ename: 'banana',
+          cname: '香蕉',
+        }]
+      }
+    })
+  </script>
+</body>
+</html>
