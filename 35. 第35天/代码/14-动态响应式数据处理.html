@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item, index) in list">{{item}}</li>
+    </ul>
+
+    <div>{{info.uname}}</div>
+    <div>{{info.age}}</div>
+    <div>{{info.gender}}</div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list: ['apple', 'orange', 'banana'],
+        info: {
+          uname: 'lisi',
+          age: 12
+        }
+      }
+    })
+    // (注意:) 用索引方法修改的数据不是响应式的
+    // vm.list[1] = 'lemon' // 页面没有改变,后台查看vm.list, 已经将orange变为lemon
+
+    // 动态处理响应式数据
+    // 可处理 数组的索引,也可处理 对象的属性
+    // Vue.set(要处理的数组名称, 要处理的数组的索引, 要处理的数组的值)
+    // Vue.set(要处理的对象名称, 要处理的对象的属性名, 要处理的属性值)
+
+    // 1. 处理 数组的索引
+    // (1) Vue 调用 set() 方法
+    Vue.set(vm.list, 1, 'lemon')
+
+    // (2) vm 实例对象 调用 $set() 方法
+    vm.$set(vm.list, 2, 'peach')
+
+    // (注意:) 直接在后台修改不是响应式的
+    // vm.info.gender = 'male'
+
+    // 2. 处理 对象的属性
+    Vue.set(vm.info, 'gender', 'female')
+
+  </script>
+</body>
+
+</html>

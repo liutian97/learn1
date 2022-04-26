@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图书案例</title>
+  <style>
+    .grid {
+      margin: auto;
+      width: 500px;
+      text-align: center;
+    }
+
+    .grid table {
+      width: 100%;
+      /* border-collapse 属性设置表格的边框是否被折叠成一个单一的边框或隔开 */
+      border-collapse: collapse;
+      /* 表示相邻边框合并在一起 */
+    }
+
+    .grid th,
+    td {
+      padding: 10;
+      border: 1px dashed #F3DCAB;;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    .grid th {
+      background-color: #F3DCAB;;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="grid">
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr :key="books.id" v-for="(item, index) in books">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>
+              <a href="" @click.prevent>修改</a>
+              <span>|</span>
+              <a href="" @click.prevent>删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    /*
+        图书管理-图书列表展示功能
+        注意事项：<a href="" @click.prevent>修改</a>
+        事件绑定时，可以只添加修饰符，而不绑定事件函数
+      */
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        books: [{
+          id: 1,
+          name: '三国演义',
+          data: ''
+        }, {
+          id: 2,
+          name: '水浒传',
+          data: ''
+        }, {
+          id: 3,
+          name: '西游记',
+          data: ''
+        }, {
+          id: 4,
+          name: '红楼梦',
+          data: ''
+        }]
+      }
+    })
+  </script>
+</body>
+
+</html>

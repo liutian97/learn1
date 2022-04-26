@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    form div {
+      height: 40px;
+      line-height: 40px;
+    }
+
+    form div:nth-child(4) {
+      height: auto;
+      /* 职业多选时有足够的高度 */
+    }
+
+    form div span:first-child {
+      display: inline-block;
+      width: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <form action="http://www.baidu.com">
+      <div>
+        <span>姓名：</span>
+        <span>
+          <input type="text" v-model="uname">
+        </span>
+      </div>
+      <div>
+        <span>性别：</span>
+        <span>
+          <!-- value 属性规定 <input> 元素的值。 -->
+          <!-- value 属性对于 <input type="checkbox"> 和 <input type="radio"> 是必需的。 -->
+          <!-- 当提交表单时该值会发送到表单的 action URL -->
+          <input type="radio" id="male" value="1" v-model="gender">
+          <label for="male">男</label>
+          <!-- <label> 标签为 input 元素定义标注 -->
+          <!-- <label> 标签的 for 属性应当与相关元素的 id 属性相同。 -->
+          <!-- 在 label 元素内点击文本，就会触发此控件.当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上 -->
+          <input type="radio" id="female" value="2" v-model="gender">
+          <label for="female">女</label>
+        </span>
+      </div>
+      <div>
+        <span>爱好：</span>
+        <span>
+          <input type="checkbox" id="ball" value="1" v-model="hobby">
+          <label for="ball">篮球</label>
+          <input type="checkbox" id="sing" value="2" v-model="hobby">
+          <label for="sing">唱歌</label>
+          <input type="checkbox" id="code" value="3" v-model="hobby">
+          <label for="code">写代码</label>
+        </span>
+      </div>
+      <div>
+        <span>职业：</span>
+        <!-- <select v-model="occupation" multiple="true"> -->
+        <select v-model="occupation" multiple>
+          <option value="0">请选择职业...</option>
+          <option value="1">教师</option>
+          <option value="2">软件工程师</option>
+          <option value="3">律师</option>
+        </select>
+      </div>
+      <div>
+        <span>个人简介：</span>
+        <!-- 不能把文本写在<textarea></textarea>之间，必须使用v-model -->
+        <textarea v-model="desc"></textarea>
+      </div>
+      <div>
+        <!-- <input type="submit"> 定义提交表单数据至表单处理程序的 按钮。 -->
+        <!-- 在表单的 action 属性中规定表单处理程序 -->
+        <!-- // 注意： 用js逻辑进行表单提交，不使用submit的默认提交 .prevent阻止默认提交行为，页面不跳转到action所指向的新页面 -->
+        <input type="submit" value="提交" @click.prevent="handle">
+      </div>
+    </form>
+  </div>
+</body>
+
+<script src="js/vue.js"></script>
+<script>
+  // 表单基本操作
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      uname: 'lisi',
+      gender: 1,
+      hobby: ['1', '2'],
+      // occupation: 3         // 单选
+      occupation: ['1', '2'],  // 多选 使用数组
+      desc: '你好'
+    },
+    methods: {
+      // 点击 “提交” 执行的函数
+      handle: function () {
+        console.log(this.uname);
+        console.log(this.gender);
+        console.log(this.hobby);            // (2) [1, 2, __ob__: Observer]
+        console.log(this.hobby.toString())  // 1,2
+        console.log(this.occupation);       // 单选  输出 3   多选 输出 (2) ['1', '2', __ob__: Observer]
+        console.log(this.desc);             // 你好
+      }
+    }
+  })
+</script>
+
+</html>

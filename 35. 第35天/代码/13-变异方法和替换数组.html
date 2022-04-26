@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 需求: 将输入框中的值frame 动态 渲染到列表  -->
+    <input type="text" v-model="frame">
+    <button @click="add">添加</button>
+    <button @click="del">删除</button>
+    <button @click="change">替换</button>
+
+    <ul>
+      <li :key="index" v-for="(item, index) in list">{{item}}</li>
+    </ul>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    /*
+        Vue数组操作
+        1、变异方法：会影响数组的原始数据的变化。
+        2、替换数组：不会影响原始的数组数据，而是形成一个新的数组。
+      */
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        frame: '',
+        list: ['apple', 'orange', 'lemon']
+      },
+      methods: {
+        add: function () {
+          // push() 变异方法
+          this.list.push(this.frame)
+        },
+        del: function () {
+          // pop() 变异方法
+          this.list.pop()
+        },
+        change: function () {
+          // slice()方法 不会影响原始数组, 会生成新数组, 所以返回值需要赋值给原始数组
+          this.list = this.list.slice(0, 2)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

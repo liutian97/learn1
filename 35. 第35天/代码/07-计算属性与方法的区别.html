@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 计算属性 使用 -->
+    <div>{{reverseString}}</div>
+    <div>{{reverseString}}</div>
+    <!-- 方法 调用要加括号 -->
+    <div>{{reverseMessage()}}</div>
+    <div>{{reverseMessage()}}</div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    // 计算属性与方法的区别: 计算属性是基于依赖进行缓存的，而方法不缓存
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello',
+        sum: 100
+      },
+      // 方法:
+      methods: {
+        reverseMessage: function () {
+          console.log('methods')        //  打印了2次
+          return this.msg.split('').reverse().join('')
+        }
+      },
+      // 计算属性
+      computed: {
+        reverseString: function () {
+          console.log('computed');     // 打印了1次
+          // return this.msg.split('').reverse().join('')
+          var total = 0;
+          for (var i = 0; i <= this.sum; i++) {
+            total += i;
+          }
+          return total
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

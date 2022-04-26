@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="msg">
+    <!-- 过滤器的使用 -->
+    <!-- (1) 与 插值表达式 绑定 -->
+    <div>{{msg | upper}}</div>
+
+    <!-- (2) 与 属性 绑定 -->
+    <div :abc="msg | upper">使用属性显示测试数据</div>
+    <!-- 如输入abc时,样式中查看为: <div abc="Abc">使用属性显示测试数据</div> -->
+
+    <!-- (3) 支持级联操作-->
+    <div>{{msg | upper | lower}}</div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    // 需求: 字符串格式化为首字母大写
+
+    // 1. 自定义 全局过滤器
+    Vue.filter('upper', function (val) {
+      // str.charAt(index) 根据位置返回字符   数组无charAt方法
+      // str.slice(start, end) [start, end)  截取字符串    arr.slice 
+      return val.charAt(0).toUpperCase() + val.slice(1); // 取出val的第一个字符, 转为大写, 然后截取第二个字符开始进行拼接
+    });
+    Vue.filter('lower', function (val) {
+      return val.charAt(0).toLowerCase() + val.slice(1)
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: ''
+      },
+      // 2. 局部过滤器
+      // filters: {
+      //   upper: function (val) {
+      //     return val.charAt(0).toUpperCase() + val.slice(1);
+      //   },
+      //   lower: function (val) {
+      //     return val.charAt(0).toLowerCase() + val.slice(1);
+      //   }
+      // }
+    })
+  </script>
+</body>
+
+</html>

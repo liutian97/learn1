@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 需求：反转字符串 -->
+    <div>{{msg}}</div>
+    <!-- (1) 表达式的计算逻辑 -->
+    <!-- <div>{{msg.split('').reverse().join('')}}</div>    olleh -->
+    <!-- (2) 使用计算属性可使模板内容更加简洁 -->
+    <div>{{reverseString}}</div>
+  </div>
+  <!-- 字符串转数组 split('') （[ "h", "e", "l", "l", "o" ]）， 数组反转 reverse() （[ "o", "l", "l", "e", "h" ]） , 数组转字符串 join('') -->
+
+  <script src="js/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello'
+      },
+      // 计算属性
+      computed: {
+        reverseString: function () {
+          return this.msg.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

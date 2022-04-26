@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图书案例</title>
+  <style>
+    .grid {
+      margin: auto;
+      width: 500px;
+      text-align: center;
+    }
+
+    .grid table {
+      border-top: 1px solid #C2D89A;
+      width: 100%;
+      /* border-collapse 属性设置表格的边框是否被折叠成一个单一的边框或隔开 */
+      border-collapse: collapse;
+      /* 表示相邻边框合并在一起 */
+    }
+
+    .grid th,
+    td {
+      padding: 10;
+      border: 1px dashed #F3DCAB;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    .grid th {
+      background-color: #F3DCAB;
+      ;
+    }
+
+    .grid .book {
+      padding-bottom: 10px;
+      padding-top: 5px;
+      background-color: #F3DCAB;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="grid">
+      <div>
+        <h1>图书管理</h1>
+        <div class="book">
+          <div>
+            <label for="id">编号:</label>
+            <input type="text" id="id" v-model="id">
+            <label for="name">名称:</label>
+            <input type="text" id="name" v-model="name">
+            <button @click="add">提交</button>
+          </div>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr :key="books.id" v-for="(item, index) in books">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>
+              <a href="" @click.prevent>修改</a>
+              <span>|</span>
+              <a href="" @click.prevent>删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    /*
+        图书管理-添加图书
+      */
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        id: '',
+        name: '',
+        books: [{
+          id: 1,
+          name: '三国演义',
+          data: ''
+        }, {
+          id: 2,
+          name: '水浒传',
+          data: ''
+        }, {
+          id: 3,
+          name: '西游记',
+          data: ''
+        }, {
+          id: 4,
+          name: '红楼梦',
+          data: ''
+        }]
+      },
+      methods: {
+        // 添加图书
+        // 获取表单中的id和name,然后放入一个对象,将对象添加到books的数组中
+        add: function () {
+          var book = {}
+          book.id = this.id; // this.id 是表单中的数据  this指向Vue实例
+          book.name = this.name;
+          book.date = '';
+          this.books.push(book);
+          // 清空表单
+          this.id = '';
+          this.name = '';
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

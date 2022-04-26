@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 定义了 v-focus 指令的表单 当打开页面还没有点击任何内容时，输入框就处于聚焦状态。 -->
+    <input type="text">
+    <input type="text" v-focus>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    // 自定义指令
+    // Vue.directive('指令名称' {函数名：function(){}})
+    // 注册一个全局自定义指令 `v-focus`
+    Vue.directive('focus', {
+      // inserted 钩子函数
+      inserted: function (el) {
+        // el表示指令所绑定的元素
+        el.focus()
+      }
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+
+      },
+      methods: {
+        handle: function () {
+
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
