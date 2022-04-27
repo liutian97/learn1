@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 使用子组件 -->
+    <!-- 插槽作用：父组件向子组件传递 模板的内容 -->
+    <!-- 通过子组件标签中的内容传递给slot -->
+    <!-- (注意1：) 如果子组件标签中有内容，则会将slot标签中的内容覆盖 -->
+    <alert-box>有bug发生</alert-box>
+    <alert-box>有一个警告</alert-box>
+    <!-- (注意2：) 如果子组件标签中没有内容,则会将slot标签中的内容显示 -->
+    <alert-box></alert-box>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    /*
+        组件插槽：父组件向子组件传递内容
+      */
+
+    // 子组件
+    // slot标签是插槽，位于子组件中
+    Vue.component('alert-box', {
+      template: `
+        <div>
+          <strong>ERROR:</strong>
+          <slot>1111</slot>
+        </div>
+      `
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+
+      }
+    })
+
+  </script>
+</body>
+
+</html>

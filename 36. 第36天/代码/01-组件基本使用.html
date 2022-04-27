@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 使用 button-counter 组件 -->
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <!-- 组件可以多次使用，每个组件都是一个独立的实例 -->
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    // 定义组件
+    Vue.component('button-counter', {
+      data: function () {
+        return {
+          count: 0
+        }
+      },
+      // template: '<button @click="count++">点击了{{ count }}次</button>',
+      template: '<button @click="handle">点击了{{ count }}次</button>',
+      methods: {
+        handle: function () {
+          this.count += 2
+        }
+      }
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

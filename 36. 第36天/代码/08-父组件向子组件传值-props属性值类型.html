@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{pmsg}}</div>
+    <!-- 使用子组件 -->
+    <!-- (1) 在父组件中直接通过属性的方式将值传递给子组件 -->
+    <!-- (注意：)冒号绑定动态属性，属性名='属性值'  属性名在子组件的 props 进行接收，属性值在父组件的 data 中进行定义 -->
+
+    <!-- pnum, pboo 前面不加冒号，是String类型 -->
+    <menu-item :pstr="pstr" :pnum="12" pboo="true" :parr="parr" :pobj="pobj"></menu-item>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+
+    // props属性值类型     
+      // 字符串 String
+      //  数值 Number
+      //  布尔值 Boolean
+      //  数组 Array
+      //  对象 Object
+
+    // 子组件
+    Vue.component('menu-item', {
+      // (2) 接收父组件传递过来的值（属性名）
+      props: ['pstr', 'pnum', 'pboo', 'parr', 'pobj'],
+      template:
+        `
+        <div>
+          <div>{{pstr}}</div>
+          <div>{{pnum + 12}}</div>s
+          <div>{{ typeof pboo}}</div>   
+          <ul>
+            <li :key="index" v-for="(item, index) in parr">{{item}}</li>
+          </ul>
+          <div>
+            <span>{{pobj.uname}}</span>
+            <span>{{pobj.age}}</span>
+          </div>
+        </div>
+      `
+    })
+
+    // 父组件
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        pmsg: '父组件中的内容',
+        pstr: 'Hello',
+        parr: ['apple', 'orange', 'peach'],
+        pobj: {
+          uname: 'lisi',
+          age: 12
+        }
+
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{pmsg}}</div>
+    <!-- (2) 在props中使用驼峰形式命名属性名，html模板中需要使用短横线的形式（menu-title）进行传递-->
+    <menu-item :menu-title="ptitle"></menu-item>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    /*
+      父组件向子组件传值-props属性名规则:
+      在props中使用驼峰形式: (1) (2)
+     */
+
+    // 定义 三级子组件
+    // 在props中使用驼峰形式命名，在 menu-item 组件的模板中进行使用测试
+    Vue.component('third-com', {
+      props: ['testTile'],
+      template: '<div>{{testTile}}</div>'
+    })
+
+
+    Vue.component('menu-item', {
+      // 在props中使用驼峰形式
+      props: ['MenuTitle'],
+      // (1) 字符串形式的模板中没有这个限制,可使用使用驼峰形式（如 MenuTitle testTile）
+      template: '<div>{{MenuTitle}}<third-com testTile="Hello"></third-com></div>'
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        pmsg: '父组件中的内容',
+        ptitle: '动态绑定属性'
+      }
+    })
+  </script>
+</body>
+
+</html>

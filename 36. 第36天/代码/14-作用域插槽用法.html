@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .current {
+      color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 在父组件中通过属性list将值传递给子组件 -->
+    <!-- 在父组件中进行设置子组件中数据的样式显示 -->
+    <fruit-list :list="list">
+      <!-- (2) 父组件向子组件传递内容 -->
+      <!-- template 标签中的内容决定子组件的数据要显示的样子 -->
+      <template slot-scope="slotProps">
+        <!-- 通过slot-scope属性得到子组件绑定的info属性传过来的数据 -->
+        <strong v-if="slotProps.info.id == 1" class="current">{{slotProps.info.name}}</strong>
+        <span v-else>{{slotProps.info.name}}</span>
+      </template>
+    </fruit-list>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    /*
+        作用域插槽：
+        在父组件中获取到子组件的数据，并加工处理得到不同的样式
+    */
+    Vue.component('fruit-list', {
+      // 接收父组件传递过来的值
+      // (注意：)  // 子组件封装好之后，不方便改动，所以数据的高亮显示在父组件中进行设置
+      props: ['list'],
+      // template: `
+      //   <div>
+      //   <ul>
+      //     <li :key="item.id" v-for="item in list">{{item.name}}</li>
+      //   </ul>
+      //   </div>
+      // `
+
+      // (1) 子组件中定义插槽，绑定属性
+      template: `
+        <div>
+          <li :key="item.id" v-for="item in list">
+            <slot :info="item">{{item.name}}</slot>
+          </li>
+        </div>
+      `
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list: [{
+          id: 1,
+          name: 'apple'
+        }, {
+          id: 2,
+          name: 'orange'
+        }, {
+          id: 3,
+          name: 'banan'
+        }]
+      }
+    })
+  </script>
+</body>
+
+</html>

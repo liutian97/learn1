@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- (2) 使用局部组件 -->
+    <!-- 局部组件只能在注册他的父组件中使用 -->
+    <hello-world></hello-world>
+    <hello-tom></hello-tom>
+    <hello-jerry></hello-jerry>
+    <test-com></test-com>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    // (3) 注册全局组件 用来测试局部组件能否在其他组件中使用
+    Vue.component('test-com', {
+      data: function () {
+        return {
+          msg: '测试局部组件能否在其他组件中使用'
+        }
+      },
+      template: '<div>{{msg}}<hello-world></hello-world></div>'  // 报错
+    })
+
+    // (1) 局部组件注册
+    // 在 Vue 的实例参数中注册, components: {'组件名': 组件内容}  组件内容抽取到对象中
+    var HelloWorld = {
+      data: function () {
+        return {
+          msg: 'HelloWorld'
+        }
+      },
+      template: '<div>{{msg}}</div>'
+    }
+    var HelloTom = {
+      data: function () {
+        return {
+          msg: 'HelloTom'
+        }
+      },
+      template: '<div>{{msg}}</div>'
+    }
+    var HelloJerry = {
+      data: function () {
+        return {
+          msg: 'HelloJerry'
+        }
+      },
+      template: '<div>{{msg}}</div>'
+    }
+    var vm = new Vue({
+      el: '#app',
+      data: {
+
+      },
+      // (1) 局部组件注册
+      components: {
+        'hello-world': HelloWorld,
+        'hello-tom': HelloTom,
+        'hello-jerry': HelloJerry,
+      }
+    })
+  </script>
+</body>
+
+</html>

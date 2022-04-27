@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- (3) 通过 style 绑定样式 扩大父组件中字体大小 -->
+    <!-- style绑定对象: 对象的属性 即要渲染的类名 对象的属性值对应的是 data 中的数据 -->
+    <div :style="{fontSize: fontSize + 'px'}">{{pmsg}}</div>
+    <!-- (2) 父组件监听自定义事件 -->
+    <!-- enlage-text 子组件自定义事件名，handle处理函数定义在父组件的methods -->
+    <menu-item :parr="parr" @enlarge-text="handle"></menu-item>
+
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    /*
+      子组件向父组件传值-基本用法
+      props传递数据原则：单向数据流
+      // 不应该通过 props 直接操作 父组件 中的数据
+    */
+
+    // 子组件
+    Vue.component('menu-item', {
+      props: ['parr'],
+      // (1) 子组件通过$emit触发一个自定义事件
+      template:
+        `
+      <div>
+        <ul>
+          <li :key="index" v-for="(item, index) in parr">{{item}}</li>
+        </ul>
+        <button @click="parr.push('lemon')">通过props直接操作父组件中的数据</button>
+        <button @click="$emit('enlarge-text')">扩大父组件中字体大小</button>
+      </div>
+      `
+    })
+    // 父组件
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        pmsg: '父组件中的内容',
+        parr: ['apple', 'orange', 'peach'],
+        fontSize: 10
+      },
+      methods: {
+        handle: function () {
+          // 扩大字体大小
+          this.fontSize += 5
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 使用子组件 -->
+    <!-- (1) slot的名字使用到其他标签，只可显示一条文本 -->
+    <base-layout>
+      <p slot="header">标题信息</p>
+      <p>主要内容1</p>
+      <p>主要内容2</p>
+      <p slot="footer">底部信息</p>
+    </base-layout>
+    <!-- (2) slot的名字使用到 template 标签 ，可以把多条文本添加到插槽中。template 标签不渲染 -->
+    <base-layout>
+      <template slot="header">
+        <p>标题信息1</p>
+        <p>标题信息2</p>
+      </template>
+      <p>主要内容1</p>
+      <p>主要内容2</p>
+      <template slot="footer">
+        <p>底部信息1</p>
+        <p>底部信息2</p>
+      </template>
+    </base-layout>
+  </div>
+
+  <script src="js/vue.js"></script>
+  <script>
+    /*
+      具名插槽:
+      根据slot的名称进行匹配，然后填充渲染模板
+     */
+    Vue.component('base-layout', {
+      template: `
+        <div>
+          <header>
+            <slot name="header"></slot>
+          </header>
+          <main>
+            <slot></slot>
+          </main>
+          <footer>
+            <slot name="footer"></slot>
+          </footer>
+        </div>
+      
+      `
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>
