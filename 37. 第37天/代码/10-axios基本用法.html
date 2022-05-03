@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="js/axios.js"></script>
+  <script>
+    // axios 专门用来调用后台接口的数据库
+    // 使用 axios 发送 get 请求
+    axios.get('http://localhost:3000/adata').then(function (ret) {
+      // console.log(ret);
+      // data属性是固定的用法，用于获取后台的实际数据
+      console.log(ret.data);
+    })
+  </script>
+</body>
+
+</html>

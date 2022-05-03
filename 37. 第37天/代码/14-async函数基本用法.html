@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="js/axios.js"></script>
+  <script>
+    // 接口调用-async/await用法
+
+    // 用传统的 axios 进行接口调用
+    axios.defaults.baseURL = 'http://localhost:3000'
+    // axios.get('/adata').then(function (ret) {
+    //   console.log(ret.data)
+    // })
+
+    // async / await 处理异步操作：
+    // (1) await
+    // (1-1) await 后面可以直接跟一个 Promise 实例对象， 在 Promise 中处理异步任务
+    // (1-2) await 前面通过 返回值 的方式得到 异步任务的处理结果
+
+    // 定义 一个 queryData 函数
+    async function queryData() {
+      var ret = await axios.get('/adata')
+      // console.log(ret);  // Promise 实例对象  {data: 'Hello axios!', status: 200, statusText: 'OK', headers: {…}, config: {…}, …}
+      // console.log(ret.data); // (直接打印) Hello axios!
+      return ret.data // 如果直接把结果返回出去, 后面需要使用 .then 得到结果
+    }
+
+    // 调用 queryData函数 查看结果
+    // queryData() (直接打印时不需要.then可得结果)
+
+    // (2) async
+    // async 函数的返回值是 新的Promise 实例对象
+    // 如果在 async 函数最后有返回值，可以通过调用 async 函数的 .then 方法得到函数的返回值
+    queryData().then(function (data) {
+      console.log(data);  // Hello axios!
+    })
+
+
+    // (例) 给 await 后面创建一个 Promise 实例对象
+    async function queryData1() {
+      var ret = await new Promise((resolve, reject) => {
+        // 创建一个定时器的异步任务
+        setTimeout(function () {
+          resolve('你好')
+        }, 1000)
+      })
+      return ret
+    }
+    queryData1().then(function (data) {
+      console.log(data); // 你好
+    })
+
+  </script>
+</body>
+
+</html>

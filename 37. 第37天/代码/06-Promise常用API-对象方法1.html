@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // console.dir(Promise);
+    // Promise常用API - 对象方法
+    // Promise.all()   并发处理多个异步任务，所有任务都执行完成才能得到结果
+    // Promise.race()  并发处理多个异步任务，只要有一个任务完成就能得到结果
+    function queryData(url) {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', url)
+        xhr.send()
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState != 4) return
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            // 处理正常情况
+            resolve(xhr.responseText)
+          } else {
+            // 处理异常情况
+            reject('服务器错误')
+          }
+        }
+      })
+    }
+
+    var p1 = queryData('http://localhost:3000/a1')
+    var p2 = queryData('http://localhost:3000/a2')
+    var p3 = queryData('http://localhost:3000/a3')
+
+    // (1) Promise.all()  then 方法里的参数函数可以是箭头函数 （区分：vue 实例 里的 methods 方法里不能用箭头函数）
+    // Promise.all([p1, p2, p3]).then((result) => {
+    //   console.log(result);  // (3) ['Hello TOM!', 'Hello JERRY!', 'Hello SPIKE!']
+    // })
+    // Promise.all([p1, p2, p3]).then(function (result) {
+    //   console.log(result);  // (3) ['Hello TOM!', 'Hello JERRY!', 'Hello SPIKE!']
+    // })
+    // console.log(Promise.all([p1, p2, p3]));  // Promise {<pending>}
+
+    // (2) Promise.race()
+    Promise.race([p1, p2, p3]).then(function (result) {
+      console.log(result);  // Hello TOM!
+    })
+    console.log(Promise.race([p1, p2, p3]));  // Promise {<pending>}
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 基于Promise发送Ajax请求
+    // (1) 封装一个名为 queryData 的 Promise 函数  （返回值为一个 Promise 对象的函数称作 Promise 函数）
+    function queryData(url) {
+      var p = new Promise(function (resolve, reject) {
+        // 处理原生Ajax
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState != 4) return
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            // 处理正常的情况
+            resolve(xhr.responseText)
+          } else {
+            // 处理异常情况
+            reject('服务器错误')
+          }
+        }
+
+      })
+      return p  // 函数调用的结果：返回 P实例对象
+    }
+    // (2) 调用 queryData 函数（返回的是Promise实例对象）获取Ajax请求的结果
+    // (2-1) 发送一个ajax请求
+
+    // queryData('http://localhost:3000/data')
+    //   .then(function (data) {
+    //     console.log(data);
+    //   }, function (info) {
+    //     console.log(info)
+    //   });
+
+    // (2-2) 发送多个ajax请求并且保证顺序
+    // .then 中传递一个函数时，表示只传递 resolve 方法作为回调。
+    queryData('http://localhost:3000/data')
+      .then(function (data) {
+        console.log(data);
+        return queryData('http://localhost:3000/data1') // return 的是第二次调用 then 的新的Promise实例对象 （ 即 queryData 函数 的返回值的实例对象）
+      })
+      .then(function (data) {  // 下一个 then 的调用者是上一个 return 的实例对象。then 的函数参数 data 用于接收上一个异步任务的成功处理结果
+        console.log(data);
+        return queryData('http://localhost:3000/data2')
+      })
+      .then(function (data) {
+        console.log(data)
+      })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Fetch响应结果的数据格式
+
+    fetch('http:localhost:3000/json').then(function (data) {
+      // (1) 响应数据格式 text()：
+      return data.text()
+
+      // (2) 响应数据格式 json()：
+      // return data.json()
+
+    }).then(function (data) {
+      console.log(data);  // 将返回体处理成字符串类型   json 形式 {"uname":"lisi","age":13,"gender":"male"}
+      console.log(typeof data);  // string
+      // 要访问到响应数据的uname属性，需要将JSON字符串再次转换为JS对象
+      var obj = JSON.parse(data);
+      console.log(obj.uname, obj.age, obj.gender);  // lisi 13 male
+
+      // console.log(data); // {uname: 'lisi', age: 13, gender: 'male'}
+      // console.log(data.uname);  // lisi
+
+    }) 
+  </script>
+</body>
+
+</html>

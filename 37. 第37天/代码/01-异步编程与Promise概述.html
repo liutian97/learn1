@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>前后端交互</qidiv>
+
+    <script src="js/jquery.js"></script>
+    <script>
+      // (测试1：Ajax 异步调用) ，只能在回调函数中打印结果，才能得到服务器传递的值
+      // var ret = '---'
+      // $.ajax({
+      //   url: 'http://localhost:3000/data',    // 访问 myapi 文件夹下的 index.js 文件 。测试：在 myapi 下执行 nodemon index.js 开启服务器
+      //   success: function (data) {
+      //     ret = data;
+      //     console.log(data);  // Hello World!
+      //   }
+      // })
+      // // console.log(ret);  // ---   后台response的数据打印Hello World!
+
+
+      // (测试2：多次 异步调用)
+      // (2.1) 多次异步书写顺序和得到结果的顺序不对应
+      // $.ajax({
+      //   url: 'http://localhost:3000/data',
+      //   success: function (data) {
+      //     console.log(data);
+      //   }
+      // })
+
+      // $.ajax({
+      //   url: 'http://localhost:3000/data1',
+      //   success: function (data) {
+      //     console.log(data);
+      //   }
+      // })
+
+      // $.ajax({
+      //   url: 'http://localhost:3000/data2',
+      //   success: function (data) {
+      //     console.log(data);
+      //   }
+      // })
+
+      // (2.2) 异步调用结果如果存在依赖需要通过 回调函数的嵌套 实现异步任务的顺序
+      // 需求：打印结果依次为 Hello World! ， Hello TOM! ， Hello JERRY!
+      $.ajax({
+        url: 'http://localhost:3000/data',
+        success: function (data) {
+          console.log(data);
+          $.ajax({
+            url: 'http://localhost:3000/data1',
+            success: function (data) {
+              console.log(data);
+              $.ajax({
+                url: 'http://localhost:3000/data2',
+                success: function (data) {
+                  console.log(data);
+                }
+              })
+            }
+          })
+        }
+      })
+    </script>
+</body>
+
+</html>
