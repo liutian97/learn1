@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="js/jquery.js"></script>
+</head>
+
+<body>
+  <button id="btnGET">使用$.get发起带参数的请求</button>
+  <button id="btnPOST">使$.post向服务器提交数据</button>
+  <button id="btnGET1">使用$.ajax发起GET请求</button>
+  <button id="btnPOST1">使用$.ajax向服务器提交数据</button>
+
+
+  <script>
+    $(function () {
+      //  (1) $.get()发起带参数的请求
+      $('#btnGET').on('click', function () {
+        $.get('http://www.liulongbin.top:3006/api/getbooks', { id: 1 }, function (res) {
+          console.log(res)
+        })
+      })
+
+      // (2) $.post()向服务器提交数据
+      $('#btnPOST').on('click', function () {
+        $.post('http://www.liulongbin.top:3006/api/addbook', { bookname: '老人与海', author: '海明威', publisher: '天津图书出版社' }, function (res) {
+          console.log(res)
+        })
+      })
+
+      // (3) 使用$.ajax()发起GET请求
+      $('#btnGET1').on('click', function () {
+        $.ajax({
+          method: 'GET',
+          url: 'http://www.liulongbin.top:3006/api/getbooks',
+          data: { id: 1 },
+          success: function (res) {
+            console.log(res);
+          }
+        })
+      })
+
+      // (4) 使用$.ajax()发起POST请求
+      $('#btnPOST1').on('click', function () {
+        $.ajax({
+          method: 'POST',
+          url: 'http://www.liulongbin.top:3006/api/addbook',
+          data: {
+            bookname: '小王子',
+            author: '安托万·德·圣-埃克苏佩里',
+            publisher: '天津图书出版社'
+          },
+          success: function (res) {
+            console.log(res);
+          }
+        })
+      })
+    })
+  </script>
+
+</body>
+
+</html>

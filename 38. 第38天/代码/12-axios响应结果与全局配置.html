@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="js/axios.js"></script>
+  <script>
+    // (1) axios 响应结果：对于 axios 响应数据来说，是包装了一个对象，可以通过 data 获取实际的数据
+    // 后台接口提供的是一个 json 格式的数据
+    axios.get('http://localhost:3000/axios-json').then(function (ret) {
+      console.log(ret.data.uname); // 对于json 格式的响应数据，不需做转换，把.then 返回结果的函数中的参数 ret 可以直接当对象使用
+    })
+
+    // (2) axios 的全局配置
+    // 配置请求的基准URL地址
+    axios.defaults.baseURL = 'http://localhost:3000'
+    // 配置请求头信息 （后期登录时会使用）
+    // (注意：) 对于跨域，请求头需要后台进行配置
+    axios.defaults.headers['mytoken'] = 'hello'
+
+    axios.get('/axios-json').then(function (ret) {
+      console.log(ret.data.uname);
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // console.dir(Promise)
+    //    1. 实例方法
+    //  p.then() 得到异步任务的正确结果
+    //  p.catch() 获取异常信息
+    //  p.finally() 成功与否都会执行(尚且不是正式标准)
+
+    // 封装一个名为 foo 的 Promise 函数（异步任务的函数）
+    function foo() {
+      // 返回一个 Promise 函数
+      return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          resolve(123)
+          // reject('error')
+        }, 100)
+      })
+    }
+
+    // 写法一：then 函数中传递一个参数（函数），得到异步任务的正确结果
+    foo()
+      .then(function (data) {
+        console.log(data);  // 123
+      })
+      .catch(function (data) {
+        console.log(data);
+      })
+      .finally(function () {
+        console.log('finished'); // finished
+      })
+
+    // 写法二：then 函数中传递两个参数（函数），第一个参数得到异步任务的正确结果，第二个参数获取异常信息
+    // Promise.prototype.catch 方法是 Promise.prototype.then(null, rejection) 的别名，用于指定发生错误时的回调函数。
+    // 两种写法是等效的
+    // foo()
+    //   .then(function (data) {
+    //     console.log(data);
+    //   }, function (data) {
+    //     console.log(data);
+    //   })
+    //   .finally(function () {
+    //     console.log('finished');
+    //   })
+  </script>
+</body>
+
+</html>

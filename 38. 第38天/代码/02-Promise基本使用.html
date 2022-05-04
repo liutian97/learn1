@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Promise基本使用
+    // let p = new Promise(() => { })
+    // console.log(p)  // [[PromiseState]]: "pending" 
+
+    // console.log(typeof Promise); // function
+    // console.dir(Promise);  // ƒ Promise()
+
+    var p = new Promise(function (resolve, reject) {
+      // 处理异步任务
+      setTimeout(function () {
+        var flag = true
+        if (flag) {
+          // 正常情况
+          resolve('hello')
+        } else {
+          // 异常情况
+          reject('出错了')
+        }
+      }, 100);
+    })
+
+
+    // 获取异步任务的结果
+    p.then(function (data) {
+      // 从 resolve 得到正常结果
+      console.log(data);
+    }, function (info) {
+      // 从 reject 得到异常结果
+      console.log(info)
+    })
+
+    // console.log(p) //[[PromiseState]]: "fulfilled"
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // then参数中的函数返回值
+    // 封装一个名为 queryData 的 Promise 函数
+    function queryData(url) {
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', url)
+        xhr.send(null)
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState != 4) return
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            // 处理正常情况
+            resolve(xhr.responseText)
+          } else {
+            // 处理异常情况
+            reject('服务器错误')
+          }
+        }
+      })
+    }
+    // 调用 queryData 函数获取Ajax请求的结果
+    queryData('http://localhost:3000/data')
+      .then(function (data) {
+        // (1) then参数中的函数返回值 -- 返回 Promise 实例对象
+        return queryData('http://localhost:3000/data1')
+      })
+      // (1-1) 上一个 then 返回的该实例对象会调用下一个 then ， 
+      // (1-2) 在下一个 then 中得到上一个 then 的处理结果
+      .then(function (data) {
+        // console.log(data) // Hello TOM! 获取从resolve方法得到正常结果
+        // 测试：返回一个自己创建的新 Promise 对象
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            resolve(123)
+          }, 1000)
+        })
+      })
+      .then(function (data) {
+        // console.log(data);  // 123  获取从上一个 then 的 resolve方法的处理结果
+        // (2) then参数中的函数返回值--返回普通值
+        return 'hello'
+      })
+      // (2-1) 下一个 then 由上一个then 产生的默认的 Promise 实例对象调用
+      // (2-2) 返回的普通值会直接传递给下一个 then
+      .then(function (data) {
+        console.log(data);  // hello
+      })
+
+    // console.log(queryData('http://localhost:3000/data'))  // [[PromiseState]]: "fulfilled"
+  </script>
+</body>
+
+</html>
