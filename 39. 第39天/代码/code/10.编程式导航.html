@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 导入 vue 文件 -->
+  <script src="./lib/vue_2.5.22.js"></script>
+  <script src="./lib/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+  <!-- 被 vm 实例所控制的区域 -->
+  <div id="app">
+    <!-- 路由链接 -->
+    <router-link to="/user/1">User1</router-link>
+    <router-link to="/user/2">User2</router-link>
+    <!-- to 属性绑定对象 name 属性:要跳转的路由, params 属性值是路由携带的参数(参数名是 routes 规则中定义的) -->
+    <router-link :to="{ name: 'user', params: {id: 3} }">User3</router-link>
+    <router-link to="/register">Register</router-link>
+
+    <!-- 路由填充位 -->
+    <router-view></router-view>
+
+
+  </div>
+
+  <script>
+    // 编程式导航
+    // 需求: 
+    // (一) 在 User1 里放一个按钮,点击按钮跳转到 Register 页面
+    // (二) 在 Register 里放一个按钮,点击按钮后退到 User1 页面  
+
+    // 创建路由组件
+    const User = {
+      // 使用 props 接收路由参数
+      props: ['uname', 'age', 'id'],
+      // (一)
+      // (1) 在 template 中 写入按钮并绑定事件 , 实现跳转到 Register 页面
+      template: `
+        <div>
+          <h1>User 组件 -- 用户id为: {{id}} -- 姓名为: {{ uname }} -- 年龄为: {{ age }}</h1>
+          <button @click="goRegister">跳转到注册页面</button>
+        </div>
+      `,
+      // (2) 定义 goRegister 事件处理函数
+      methods: {
+        goRegister() {
+          // (3) 用编程的方式控制路由跳转
+          this.$router.push('/register')
+        }
+      }
+    }
+    const Register = {
+      // (二)
+      // (1) template 中写入按钮并绑定事件 , 实现后退到 User1 页面
+      template: `
+        <div>
+          <h1>Register 组件</h1>
+          <button @click="goBack">后退到User1页面</button>
+        </div>
+      `,
+      // (2) 定义 goBack 事件处理函数
+      methods: {
+        goBack() {
+          // (3) 用编程的方式控制路由跳转
+          this.$router.go(-1)
+        }
+      }
+    }
+
+    // 创建路由实例对象
+    const router = new VueRouter({
+      // 所有的路由规则
+      routes: [
+        { path: '/', redirect: '/user' },
+        {
+          // 定义 name 属性为路由规则的别名
+          name: 'user',
+          path: '/user/:id',
+          component: User,
+          // 路由组件传递参数-- props的值为函数类型(动态， 静态 结合传参)
+          props: route => ({ uname: 'lisi', age: 12, id: route.params.id })
+        },
+        { path: '/register', component: Register }
+      ]
+    })
+
+    //创建 vm 实例对象
+    const vm = new Vue({
+      //指定控制的区域
+      el: '#app',
+      data: {
+
+      },
+      // 挂载路由实例对象
+      router
+    });
+  </script>
+</body>
+
+</html>

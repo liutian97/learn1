@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>基于vue-router的案例</title>
+  <style type="text/css">
+    html,
+    body,
+    #app {
+      margin: 0;
+      padding: 0px;
+      height: 100%;
+    }
+
+    .header {
+      height: 50px;
+      background-color: #545c64;
+      line-height: 50px;
+      text-align: center;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .footer {
+      height: 40px;
+      line-height: 40px;
+      background-color: #888;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+    }
+
+    .main {
+      display: flex;
+      position: absolute;
+      top: 50px;
+      bottom: 40px;
+      width: 100%;
+    }
+
+    .content {
+      flex: 1;
+      text-align: center;
+      height: 100%;
+    }
+
+    .left {
+      flex: 0 0 20%;
+      background-color: #545c64;
+    }
+
+    .left a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .right {
+      margin: 5px;
+    }
+
+    .btns {
+      width: 100%;
+      height: 35px;
+      line-height: 35px;
+      background-color: #f5f5f5;
+      text-align: left;
+      padding-left: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      height: 30px;
+      background-color: #ecf5ff;
+      border: 1px solid lightskyblue;
+      font-size: 12px;
+      padding: 0 20px;
+    }
+
+    .main-content {
+      margin-top: 10px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    ul li {
+      height: 45px;
+      line-height: 45px;
+      background-color: #a0a0a0;
+      color: #fff;
+      cursor: pointer;
+      border-bottom: 1px solid #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid #eee;
+      line-height: 35px;
+      font-size: 12px;
+    }
+
+    th {
+      background-color: #ddd;
+    }
+  </style>
+  <!-- (1-1) 导入 vue 文件，为全局 window 对象挂载 Vue 构造函数 -->
+  <script src="./lib/vue_2.5.22.js"></script>
+  <!-- (1-1) 导入 vue-router 文件，为全局 window 对象挂载 VueRouter 构造函数 -->
+  <script src="./lib/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+  <!-- (1-2) 创建 要被 vue 实例所控制的区域 -->
+  <div id="app">
+    <!-- (1-6) 添加 路由占位符 -->
+    <router-view></router-view>
+  </div>
+
+  <script>
+    // 案例：后台管理路由案例
+    // (1) 抽离并渲染 App 根组件
+    // (2) 将左侧菜单改造为路由链接
+    // (3) 创建左侧菜单对应的路由组件
+    // (4) 在右侧主体区域添加路由占位符
+    // (5) 添加子路由规则 (作为 App 根路由规则的 子路由规则)
+    // (6) 通过路由重定向默认渲染用户组件
+    // (7) 渲染用户列表数据
+    // (8) 编程式导航跳转到用户详情页
+    // (9) 实现后退功能
+
+
+
+    // (1-4) 定义 App 根组件
+    const App = {
+      template: `
+      <div>
+        <!-- 头部区域 -->
+        <header class="header">传智后台管理系统</header>
+        <!-- 中间主体区域 -->
+        <div class="main">
+          <!-- 左侧菜单栏 -->
+          <div class="content left">
+            <ul>
+              <!-- (2) 将左侧菜单改造为路由链接 -->
+              <li><router-link to="/users">用户管理</router-link></li>
+              <li><router-link to="/rights">权限管理</router-link></li>
+              <li><router-link to="/goods">商品管理</router-link></li>
+              <li><router-link to="/orders">订单管理</router-link></li>
+              <li><router-link to="/settings">系统设置</router-link></li>
+            </ul>
+          </div>
+          <!-- 右侧内容区域 -->
+          <div class="content right">
+            <div class="main-content">
+              <!-- (4) 在右侧主体区域添加路由占位符 -->
+              <!-- 整个页面属于 App 根组件,所以 路由占位符 应该放到 App 根组件的相应区域 -->
+              <router-view />
+            </div>
+          </div>
+        </div>
+        <!-- 尾部区域 -->
+        <footer class="footer">版权信息</footer>
+      </div>
+      `
+    }
+
+    // (3) 创建左侧菜单对应的路由组件
+    const Users = {
+      // (7) 渲染用户列表数据
+      // (7-1)　在 用户组件 定义 data 数据(userList数组 里面包含用户信息对象)
+      // data为一个函数且需要返回一个对象
+      data() {
+        return {
+          userlist: [
+            { id: 1, name: '张三', age: 10 },
+            { id: 2, name: '李四', age: 20 },
+            { id: 3, name: '王五', age: 30 },
+            { id: 4, name: '赵六', age: 40 }
+          ]
+        }
+      },
+      // (7-2) template 模板中 通过 v-for 循环数组数据 渲染出表格 
+      template: `
+        <div>
+          <h3>用户管理区域</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 列表数据变动会导致  视图列表重新更新  为了提升性能  方便更新 需要提供一个属性 key. 使得 vue渲染页面标签 速度快 -->
+              <tr v-for="item in userlist" :key="item.id">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>
+                  <!-- 防止页面跳转 href="javascript:;" -->
+                  <!-- (8-3) 实现编程式导航跳转到用户详情页 定义点击事件 -->
+                  <a href="javascript:;" @click='goDetail(item.id)'>详情</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `,
+      // (8-4) 定义 goDetail 事件处理函数
+      methods: {
+        goDetail(id) {
+          console.log(id);
+          // (8-5) 用编程的方式控制路由跳转
+          // (注意:) 跳转路径中把 id 作为动态参数传递, 则路由规则中需要把 id 标记为动态参数
+          this.$router.push('/userinfo/' + id)
+        }
+      }
+    }
+
+    // (8) 编程式导航跳转到用户详情页
+    // (8-1) 定义 用户详情页的组件
+    const UserInfo = {
+      // (8-8) 使用 props 接收路由参数
+      props: ['id'],
+      template: `
+        <div>
+          <h5>用户详情页 -- 用户id为: {{id}}</h5>
+          <!-- (9) 实现后退功能 -->
+          <button @click='goback()'>后退</button>
+        </div>
+      `,
+      methods: {
+        goback() {
+          // 用编程的方式控制路由后退
+          this.$router.go(-1)
+        }
+      }
+    }
+
+    const Rights = {
+      template: `
+        <div>
+          <h3>权限管理区域</h3>
+        </div>
+      `
+    }
+    const Goods = {
+      template: `
+        <div>
+          <h3>商品管理区域</h3>
+        </div>
+      `
+    }
+    const Orders = {
+      template: `
+        <div>
+          <h3>订单管理区域</h3>
+        </div>
+      `
+    }
+    const Settings = {
+      template: `
+        <div>
+          <h3>系统设置区域</h3>
+        </div>
+      `
+    }
+
+
+    // (1-5) 创建路由实例对象
+    const router = new VueRouter({
+      // 父路由规则
+      routes: [
+        {
+          path: '/',
+          component: App,
+          // (6) 通过路由重定向默认渲染用户组件(在访问根路径时)
+          // (注意:) 重定向后, 既会展示 Users 子组件, 也会展示 App 根组件
+          redirect: '/users',
+
+          // (5) 添加子路由规则(作为 App 根路由规则的 子路由规则)
+          // 5个 子路由组件 作为 App 父路由组件 的 子组件显示
+          children: [
+            { path: '/users', component: Users },
+
+            // (8-2) 定义 用户详情页的路由规则
+            {
+              // (8-6) 路由规则中需要把 id 标记为动态参数
+              path: '/userinfo/:id',
+              component: UserInfo,
+              // (8-7) 路由组件传递参数-- props的值为布尔类型(动态参数)
+              // 跳转到用户详情页后, 在 用户详情页 获取传入的 id
+              props: true
+            },
+
+            { path: '/rights', component: Rights },
+            { path: '/goods', component: Goods },
+            { path: '/orders', component: Orders },
+            { path: '/settings', component: Settings }
+          ]
+        }
+      ]
+    })
+
+    // (1-3) 创建 vm 实例对象
+    const vm = new Vue({
+      el: '#app',
+      // (1-5-1) 挂载路由实例对象
+      router
+    })
+
+  </script>
+
+</body>
+
+</html>

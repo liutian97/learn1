@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 导入 vue 文件 -->
+  <script src="./lib/vue_2.5.22.js"></script>
+  <!-- 引入 vue-router 的库文件, 为全局 window 对象挂载 VueRouter 构造函数 -->
+  <script src="./lib/vue-router_3.0.2.js"></script>
+</head>
+
+<body>
+  <!-- 被 vm 实例所控制的区域 -->
+  <div id="app">
+    <!-- (1) 父路由组件模板 -->
+    <!-- (1-1) 父级路由链接 -->
+    <router-link to="/user">User</router-link>
+    <router-link to="/register">Register</router-link>
+    <!-- (1-2) 父组件路由填充位 -->
+    <router-view></router-view>
+  </div>
+
+  <script>
+    // (2) 定义父级路由组件
+    const User = {
+      template: '<h1>User</h1>'
+    }
+    const Register = {
+      template: `
+        <div>
+          <h1>Register</h1>
+          <hr/>
+
+          <!-- (3) 子级路由模板 (定义到父级路由组件的 template 中) -->
+          <!-- (3-1) 子路由链接 -->
+          <router-link to="/register/tab1">tab1</router-link>
+          <router-link to="/register/tab2">tab2</router-link>
+          <!-- (3-2) 子级路由填充位 -->
+          <router-view></router-view>
+        </div>
+        `
+    }
+
+    // (4) 定义子级路由组件
+    const Tab1 = {
+      template: '<h3>tab1 子组件</h3>'
+    }
+    const Tab2 = {
+      template: '<h3>tab2 子组件</h3>'
+    }
+
+    // (5) 创建路由实例对象
+    const router = new VueRouter({
+      routes: [
+        { path: '/', redirect: '/user' },
+        { path: '/user', component: User },
+        { // children 数组表示子路由规则
+          path: '/register', component: Register, children: [
+            { path: '/register/tab1', component: Tab1 },
+            { path: '/register/tab2', component: Tab2 },
+          ]
+        }
+      ]
+    })
+    //创建 vm 实例对象
+    const vm = new Vue({
+      //指定控制的区域
+      el: '#app',
+      data: {
+
+      },
+      // (6) 挂载路由实例对象
+      router
+    });
+  </script>
+</body>
+
+</html>
