@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webpack 的基本使用--列表隔行变色</title>
+  <!-- 传统方式导入 jQuery.js文件 -->
+  <!-- <script src="jquery.js"></script> -->
+  <!-- 模块化 基于index.html 导入 index.js(存在兼容性问题) -->
+  <!-- <script src="./index.js"></script> -->
+
+  <!-- 通过 webpack 转换后得到的，不存在兼容性问题 -->
+  <!-- <script src="../dist/main.js"></script> -->
+  <!-- 导入手动指定 webpack配置打包的入口文件 -->
+  <!-- <script src="../dist/bundle.js"></script> -->
+
+  <!-- 导入 webpack-dev-server 生成的 存在于项目根目录下的 bundle.js 文件 -->
+  <script src="/bundle.js"></script>
+</head>
+
+<body>
+  <!-- 创建列表隔行变色项目
+  
+    ① 新建项目空白目录，并运行 npm init –y 命令，初始化包管理配置文件 package.json
+    ② 新建 src 源代码目录
+    ③ 新建 src -> index.html 首页
+    ④ 初始化首页基本的结构
+    ⑤ 运行 npm install jquery -S 命令，安装 jQuery
+    ⑥ 通过模块化的形式，实现列表隔行变色效果 -->
+
+  <!-- 快速创建标签语法： ul>li{这是第$个li}*9 -->
+  <input type="text" placeholder="测试css样式兼容问题">
+  <ul>
+    <li>这是第1个li</li>
+    <li>这是第2个li</li>
+    <li>这是第3个li</li>
+    <li>这是第4个li</li>
+    <li>这是第5个li</li>
+    <li>这是第6个li</li>
+    <li>这是第7个li</li>
+    <li>这是第8个li</li>
+    <li>这是第9个li</li>
+  </ul>
+
+  <div id="box"></div>
+
+  <hr />
+
+  <!-- 将来要被 vue 控制的区域 -->
+  <div id="app">
+
+  </div>
+
+
+
+
+</body>
+
+</html>
