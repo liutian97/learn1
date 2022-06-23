@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>清除浮动之双伪元素</title>
+  <style>
+    .box {
+      width: 800px;
+      border: 1px solid blue;
+      margin: 0 auto;
+    }
+
+    /* 清除浮动 */
+    .clearfix:before,
+    .clearfix:after {
+      content: "";
+      display: table;
+      /* 元素会作为块级表格来显示 */
+    }
+
+    .clearfix:after {
+      clear: both;
+    }
+
+    .clearfix {
+      *zoom: 1;
+    }
+
+    .damao {
+      float: left;
+      width: 300px;
+      height: 200px;
+      background-color: cornflowerblue;
+    }
+
+    .ermao {
+      float: left;
+      width: 200px;
+      height: 200px;
+      background-color: greenyellow;
+    }
+
+    .footer {
+      height: 200px;
+      background-color: coral;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- 双伪元素： 给父元素添加 -->
+  <div class="box clearfix">
+    <div class="damao">大毛</div>
+    <div class="ermao">二毛</div>
+    <div class="ermao">二毛</div>
+  </div>
+  <div class="footer">测试浮动元素是否影响后面的标准流</div>
+
+</body>
+
+</html>

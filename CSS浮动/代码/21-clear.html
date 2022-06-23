@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* clear 原理：设置清除浮动以后，浏览器会自动为元素添加一个 上外边距，使其位置不受其他元素的影响 */
+    div {
+      font-size: 20px;
+    }
+
+    /* 文字不受浮动元素的影响，本身浮动的存在为了实现文字环绕效果 */
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background-color: #bcf;
+      float: left
+    }
+
+    .box2 {
+      width: 400px;
+      height: 400px;
+      background-color: #ff0;
+      float: right
+    }
+
+    .box3 {
+      width: 200px;
+      height: 200px;
+      background-color: #bfc;
+      clear: left;
+      /* 清除 左侧 浮动元素 对当前元素产生的影响*/
+      /* clear: right; */
+      /* 清除 右侧 浮动元素 对当前元素产生的影响*/
+      /* clear: both; */
+      /* 清除 两侧中最大影响的那侧浮动元素（上外边距大的） 对当前元素产生的影响，( 注意： 不是两侧都清除 )*/
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box1">1</div>
+  <div class="box2">2</div>
+  <div class="box3">3</div>
+</body>
+
+</html>

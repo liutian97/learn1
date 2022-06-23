@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>常见网页布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none
+    }
+
+    .top {
+      height: 50px;
+      background-color: gray;
+    }
+
+    /* banner, box 相邻块元素垂直外边距 margin-bottom 和 margin-top 合并 */
+    /* 解决：尽量给一个盒子添加外边距 */
+    .banner {
+      width: 980px;
+      height: 150px;
+      background-color: gray;
+      margin: 10px auto;
+    }
+
+    .box {
+      width: 980px;
+      height: 300px;
+      background-color: #bfc;
+      /* margin: 10px auto; */
+      margin: 0 auto
+    }
+
+    /* 右边距小，四个盒子刚好装下，不在需要给最后一个盒子清楚外边距 */
+    .box li {
+      float: left;
+      width: 240px;
+      height: 300px;
+      background-color: gray;
+      margin-right: 5px;
+    }
+
+    /* 父盒子装不下子盒子，最后一个盒子会掉到下一行 */
+    /* .box li {
+      float: left;
+      width: 237px;
+      height: 300px;
+      background-color: gray;
+      margin-right: 10px;
+    } 
+    /* .box .last {
+      margin-right: 0px
+    }  */
+    /* 这里必须写 .box .last 注意权重问题  20 */
+
+    .footer {
+      /* 只要是通栏的盒子(和浏览器一样宽) 不需要指定宽度 */
+      height: 200px;
+      background-color: gray;
+      margin-top: 10px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top">top</div>
+  <div class="banner">banner</div>
+  <div class="box">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li class="last">4</li>
+    </ul>
+  </div>
+  <div class="footer">footer</div>
+</body>
+
+</html>
