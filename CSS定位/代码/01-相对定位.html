@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /*  
+    相对定位：
+        1. 它是相对于自己原来的位置来移动的。
+        2. 不脱离标准流，后面的盒子仍然以标准流的方式对待它。
+    */
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background-color: #bcf;
+      position: relative;
+      top: 100px;
+      left: 100px;
+    }
+
+    .box2 {
+      width: 200px;
+      height: 200px;
+      background-color: #bfc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+</body>
+
+</html>

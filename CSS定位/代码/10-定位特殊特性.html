@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定位的特殊特性</title>
+  <style>
+    /* 绝对定位和固定定位也和浮动类似。 */
+
+    /* 1. 行内元素添加绝对或者固定定位(脱标)，可以直接设置高度和宽度。 */
+    span {
+      position: absolute;
+      top: 300px;
+      width: 100px;
+      height: 100px;
+      background-color: aquamarine;
+    }
+
+    /* 2. 块级元素添加绝对或者固定定位，如果不给宽度或者高度，默认大小是内容的大小。 */
+    div {
+      position: absolute;
+    }
+
+    /* 块元素 ：独占一行，宽度默认是容器（父级宽度）的100%。*/
+    .div1 {
+      background-color: slateblue;
+    }
+
+    .div2 {
+      background-color: aqua;
+      top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <span>行内元素</span>
+  <div class="div1">块元素</div>
+  <div class="div2">块元素</div>
+
+
+</body>
+
+</html>

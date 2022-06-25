@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>显示隐藏元素之overflow</title>
+  <style>
+    .box {
+      /* overflow: visible; */
+      /* overflow: hidden; */
+      /* scroll 溢出的部分显示滚动条  不溢出也显示滚动条 */
+      /* overflow: scroll; */
+      /* auto 溢出的时候才显示滚动条 不溢出不显示滚动条 */
+      /* overflow: auto; */
+
+
+      /* (注意：) 如果有定位的盒子， 请慎用overflow:hidden 因为它会隐藏多余的部分。 */
+
+      width: 200px;
+      height: 200px;
+      border: 3px solid #bcf;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    overflow 属性指定了如果内容溢出一个元素的框（超过其指定高度及宽度） 时，会发生什么。overflow 属性只工作于指定高度的块元素上。默认情况下，overflow 的值为 visible， 意思是内容溢出元素框。
+    inherit 规定应该从父元素继承 overflow 属性的值。hidden 内容会被修剪，并且其余内容是不可见的。scroll 内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。auto
+    如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+  </div>
+
+</body>
+
+</html>
