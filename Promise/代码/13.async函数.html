@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    async function main () {
+      // 函数返回值为 Promise 对象
+      // Promise 对象的结果由 async 函数执行的返回值决定
+      // (1) 返回值是一个非 Promise 类型的数据
+      // return 11
+
+      // (2) 返回值是一个 Promise 对象
+      // return new Promise((resolve, reject) => {
+      //   // resolve('ok')
+      //   reject('err')
+      // })
+
+      // (3) 抛出错误
+      throw 'no'
+
+    }
+
+    let result = main();
+    console.log(result);
+    // (1) [[PromiseState]]: "fulfilled"  [[PromiseResult]]: 11
+    // (2) [[PromiseState]]: "fulfilled"  [[PromiseResult]]: "ok"
+       //  [[PromiseState]]: "rejected"   [[PromiseResult]]: "err"
+    // (3) [[PromiseState]]: "rejected"   [[PromiseResult]]: "no"
+  </script>
+</body>
+
+</html>

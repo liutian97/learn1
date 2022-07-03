@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let p = new Promise((resolve, reject) => {
+      // (1) 先改变状态再执行回调 (同步任务)  当指定回调时，回调就会调用，得到数据
+      // 在执行器中直接调用 resolve()/reject()
+      // resolve('ok')
+
+      // (2) 先执行回调再改变状态 (异步任务)  当状态发生改变时，回调就会调用，得到数据。
+      setTimeout(() => {
+        resolve('ok')
+      }, 1000)
+    })
+
+    p.then(value => {
+      console.log(value);
+    }, error => {
+
+    })
+  </script>
+</body>
+
+</html>

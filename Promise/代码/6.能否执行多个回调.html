@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let p = new Promise((resolve, reject) => {
+      resolve('ok')
+    })
+
+    // 当 Promise 的状态改变后，通过 then 指定的多个回调都会执行
+
+    // 指定回调1
+    p.then(value => {
+      console.log(value);
+    })
+
+    // 指定回调2
+    p.then(value => {
+      alert(value);
+    })
+
+  </script>
+</body>
+
+</html>

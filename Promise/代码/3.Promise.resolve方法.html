@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Promise.resolve()  将现有对象转为 Promise 对象
+    // (1) 如果传入的参数是 非Promise 类型的对象，则返回的对象是成功的Promise对象
+    let p1 = Promise.resolve(11)
+    console.log(p1); //   promise  [[PromiseState]]: "fulfilled"  [[PromiseResult]]: 11
+
+    // (2) 如果传入的参数是 Promise 对象，则参数的结果决定了 resolve 的结果
+    let p2 = Promise.resolve(new Promise((resolve, reject) => {
+      // resolve('ok')
+      reject('Error')
+    }))
+    // p2.then(value => { console.log(value) }, error => { console.log(error); }) // ok
+    p2.catch(error => {
+      console.log(error);  // Error
+    })
+  </script>
+</body>
+
+</html>

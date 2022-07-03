@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('ok')
+      }, 1000)
+
+    })
+
+    p.then(value => {
+      console.log(111);
+      // 中断 Promise链
+      return new Promise(() => { })
+      // 方法：在回调函数中返回一个 pedding 状态的 Promise 对象
+      // 此时 then() 方法返回的也是 pedding 状态的 Promise 对象，后面回调函数不执行，回调函数需要在状态改变之后才执行，得到数据
+    }).then(value => {
+      console.log(222);
+    }).then(value => {
+      console.log(333);
+    }).catch(error => {
+      console.warn(error);
+    })
+
+  </script>
+</body>
+
+</html>

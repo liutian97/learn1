@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Promise.reject(reason)方法也会返回一个新的 Promise 实例，该实例的状态为rejected。
+
+    // 参数是一个数字
+    let p = Promise.reject(11)
+    console.log(p); // Promise [[PromiseState]]: "rejected"  [[PromiseResult]]: 11
+
+    // 参数是一个字符串
+    let p1 = Promise.reject('hello')
+    console.log(p1); // [[PromiseState]]: "rejected"  [[PromiseResult]]: "hello"
+
+    // 参数是一个 Promise 对象
+    let p2 = Promise.reject(new Promise((resolve, reject) => {
+      resolve('ok');
+    }))
+    console.log(p2); // [[PromiseState]]: "rejected"  [[PromiseResult]]: Promise
+  </script>
+</body>
+
+</html>

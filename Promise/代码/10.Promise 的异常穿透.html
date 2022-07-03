@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('ok')
+        // (1) reject('Err')
+      }, 1000)
+
+    })
+
+    let result = p.then(value => {
+      // console.log(111);
+      // (2) 在 第一个 then() 处抛出错误
+      throw '出错了'
+    }).then(value => {
+      console.log(222);
+    }).then(value => {
+      console.log(333);
+    }).catch(error => {
+      console.warn(error);  // (1) Err  
+      // (2) 出错了
+    })
+
+    console.log(result); // [[PromiseState]]: "fulfilled" [[PromiseResult]]: undefined
+
+  </script>
+</body>
+
+</html>

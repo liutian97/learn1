@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let p = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('ok')
+      }, 1000)
+    })
+
+
+    // let result = p.then(value => {
+    //   return new Promise((resolve, reject) => {
+    //     resolve('success')
+    //   })
+    // })
+    // console.log(result); // [[PromiseState]]: "fulfilled" [[PromiseResult]]: "success"
+
+
+    // 用 .then() 得出上一个 then 的结果
+    p.then(value => {
+      return new Promise((resolve, reject) => {
+        resolve('success')
+      })  // (1) then() 返回 的是 Promise 实例对象，会调用下一个 then
+    }).then(value => {
+      console.log(value);  // success  (2)  then() 返回普通值, 调用下一个then() 结果为 undefined
+    }).then(value => {
+      console.log(value);  // undefined
+    })
+
+  </script>
+</body>
+
+</html>
